@@ -19,10 +19,9 @@
 
 
 // macros
-#define M_VERSION M(0)
-#define M_PDB M(71)
-#define M_IPDB M(72)
-
+#define M_VERSION           M(0)
+#define M_PDB               M(71)
+#define M_IPDB              M(72)
 
 
 enum custom_keycodes {
@@ -39,22 +38,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Base layer ((idea))
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * | ESC    |   1  |   2  |   3  |   4  |   5  | SfLt |           | SfRt |   6  |   7  |   8  |   9  |   0  | BkSp   |
+ * | ESC    |   1  |   2  |   3  |   4  |   5  |  6   |           |      |   7  |   8  |   9  |   0  |   -  |   =    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L1  |   Y  |   U  |   I  |   O  |   P  | Del    |
+ * | Tab    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L1  |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Caps/L2|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |Enter/L2|
+ * |   `    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  | ;/L3 |   '    |
  * |--------+------+------+------+------+------|  L6  |           |  L6  |------+------+------+------+------+--------|
- * | LSft/( |   Z  |   X  |   C  | V/L3 | B/L4 |      |           |      | N/L4 | M/L3 |   ,  |   .  |   /  | RSft/) |
+ * | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RSft   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Ctrl/[| Alt/]|   #  | Left |Right |                                       |  Up  | Down |   -  | Alt/[|Ctrl/]|
+ *   | Ctrl |  L5  |  Alt | Meta | AltGr|                                       | AltGr| Down | lead |  L5  |  L2 ]|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |  L2  | lead |       | lead |  Ins |
+ *                                        |  Esc |  Ins |       |  Del |  Esc |
  *                                 ,------|------|------|       |------+------+------.
- *                                 | Space| BkSp | Home |       | PgUp | Enter|Space |
- *                                 |  /   |  /   |------|       |------|   /  |  /   |
- *                                 | Ctrl | Alt  |End/L5|       |PDn/L5|  Alt | Ctrl |
+ *                                 |      |      | Home |       | PgUp |      |Space |
+ *                                 | Space| BkSp |------|       |------| Enter|  /   |
+ *                                 |      |      |  End |       | PgDn |      |  L6  |
  *                                 `--------------------'       `--------------------'
  */
   [L_BASE] = KEYMAP(
@@ -68,11 +67,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESCAPE, KC_INSERT, KC_HOME, KC_SPC, KC_BSPC, KC_END,
 
       // right hand
-      M_VERSION, KC_7, KC_8, KC_9, KC_0, KC_MINUS, KC_EQUAL, 
-      TO(L_SYMB), KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLASH, 
-      KC_H, KC_J, KC_K, KC_L, LT(L_MEDI, KC_SCOLON), KC_QUOTE, 
+      M_VERSION,    KC_7,   KC_8,   KC_9,   KC_0,   KC_MINUS,   KC_EQUAL,
+      TO(L_SYMB),   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,       KC_BSLASH,
+      KC_H,         KC_J,   KC_K,   KC_L,   LT(L_MEDI,  KC_SCOLON), KC_QUOTE, 
       MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, KC_DOT, CTL_T(KC_SLASH), KC_RSHIFT, 
-      KC_RALT, MO(L_EMOT), KC_TRANSPARENT, MO(L_MIRR), MO(L_SYMB), 
+      KC_RALT, MO(L_EMOT), KC_LEAD, MO(L_MIRR), MO(L_SYMB),
       // right thumb
       KC_DELETE, KC_ESCAPE, KC_PGUP, KC_PGDOWN, KC_ENT, LT(L_MACR, KC_SPC)
     ),
@@ -234,6 +233,50 @@ void matrix_scan_user(void) {
 
         SEQ_TWO_KEYS(KC_J, KC_K) {
             send_keystrokes(KC_ESCAPE, KC_NO);
+        }
+        SEQ_TWO_KEYS(KC_G, KC_G) {
+            SEND_STRING("git afterfeature");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_A) {
+            SEND_STRING("git add .");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_D) {
+            SEND_STRING("git diff");
+        }
+        SEQ_THREE_KEYS(KC_G, KC_D, KC_S) {
+            SEND_STRING("git diff --staged");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_L) {
+            SEND_STRING("git log");
+        }
+        SEQ_THREE_KEYS(KC_G, KC_L, KC_O) {
+            SEND_STRING("git log --oneline");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_F) {
+            SEND_STRING("git fetch");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_O) {
+            SEND_STRING("git checkout");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_P) {
+            SEND_STRING("git pull");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_S) {
+            SEND_STRING("git status");
+        }
+        SEQ_TWO_KEYS(KC_G, KC_C) {
+            SEND_STRING("git commit -m ''");
+            send_keystrokes(KC_LEFT, KC_NO);
+        }
+        SEQ_THREE_KEYS(KC_G, KC_C, KC_A) {
+            SEND_STRING("git commit --amend");
+        }
+
+        SEQ_TWO_KEYS(KC_E, KC_E) {
+            SEND_STRING("cd /opt/app_emoney/application; source ../venv_emoney/bin/activate");
+        }
+        SEQ_TWO_KEYS(KC_E, KC_S) {
+            SEND_STRING("cd /opt/app_emoney/application; source ../venv_emoney/bin/activate\n./website/manage.py shell\n");
         }
       }
 
