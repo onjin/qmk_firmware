@@ -106,7 +106,7 @@ endif
 
 # Set the default goal depending on where we are running make from
 # this handles the case where you run make without any arguments
-.DEFAULT_GOAL := all:all
+.DEFAULT_GOAL := mine
 ifneq ($(KEYMAP),)
     .DEFAULT_GOAL := $(KEYBOARD):$(KEYMAP)
 else ifneq ($(KEYBOARD),)
@@ -531,6 +531,13 @@ endif
 	if [ -f $(ERROR_FILE) ]; then printf "$(MSG_ERRORS)" & exit 1; fi;
 	$(foreach TEST,$(sort $(TESTS)),$(RUN_TEST))
 	if [ -f $(ERROR_FILE) ]; then printf "$(MSG_ERRORS)" & exit 1; fi;
+
+edit:
+	vim keyboards/ergodox_ez/keymaps/mine/keymap.c
+
+.PHONY: mine
+mine:
+	make ergodox_ez-mine
 
 lib/%:
 	git submodule sync $?

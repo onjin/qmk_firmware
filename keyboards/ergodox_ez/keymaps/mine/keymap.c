@@ -15,13 +15,10 @@
 #define L_MEDI 3
 #define L_EMOT 4
 #define L_MIRR 5
-#define L_MACR 6
 
 
 // macros
 #define M_VERSION           M(0)
-#define M_PDB               M(71)
-#define M_IPDB              M(72)
 
 
 enum custom_keycodes {
@@ -46,14 +43,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|  L6  |           |  L6  |------+------+------+------+------+--------|
  * | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RSft   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Ctrl |  L5  |  Alt | Meta | AltGr|                                       | AltGr| Down | lead |  L5  |  L2 ]|
+ *   | Ctrl |  L5  | Lead | Meta | Alt  |                                       | AltGr| Down | lead |  L5  |  L2  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |  Esc |  Ins |       |  Del |  Esc |
+ *                                        |  Esc |  Ins |       |  Del | Lock |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | Home |       | PgUp |      |Space |
- *                                 | Space| BkSp |------|       |------| Enter|  /   |
- *                                 |      |      |  End |       | PgDn |      |  L6  |
+ *                                 |      |      | Home |       | PgUp |      |      |
+ *                                 | Space| BkSp |------|       |------| Enter|Space |
+ *                                 |      |      |  End |       | PgDn |      |      |
  *                                 `--------------------'       `--------------------'
  */
   [L_BASE] = KEYMAP(
@@ -62,18 +59,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, TO(L_COLE), 
       KC_GRAVE, KC_A, KC_S, KC_D, KC_F, KC_G, 
       KC_LSHIFT, CTL_T(KC_Z), KC_X, KC_C, KC_V, KC_B, ALL_T(KC_NO), 
-      KC_LCTL, MO(L_MIRR), KC_LALT, KC_LGUI, KC_RALT, 
+      KC_LCTL, MO(L_MIRR), KC_LEAD, KC_LGUI, KC_LALT, 
       // left thumb
       KC_ESCAPE, KC_INSERT, KC_HOME, KC_SPC, KC_BSPC, KC_END,
 
       // right hand
-      M_VERSION,    KC_7,   KC_8,   KC_9,   KC_0,   KC_MINUS,   KC_EQUAL,
+      KC_TRNS,      KC_7,   KC_8,   KC_9,   KC_0,   KC_MINUS,   KC_EQUAL,
       TO(L_SYMB),   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,       KC_BSLASH,
       KC_H,         KC_J,   KC_K,   KC_L,   LT(L_MEDI,  KC_SCOLON), KC_QUOTE, 
       MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, KC_DOT, CTL_T(KC_SLASH), KC_RSHIFT, 
       KC_RALT, MO(L_EMOT), KC_LEAD, MO(L_MIRR), MO(L_SYMB),
       // right thumb
-      KC_DELETE, KC_ESCAPE, KC_PGUP, KC_PGDOWN, KC_ENT, LT(L_MACR, KC_SPC)
+      KC_DELETE, KC_LOCK, KC_PGUP, KC_PGDOWN, KC_ENT, KC_SPC
     ),
 
   // colemak
@@ -88,56 +85,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // media
   [L_MEDI] = KEYMAP(
-      KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_WH_UP,KC_MS_UP,KC_MS_WH_DOWN,KC_TRANSPARENT,TO(L_SYMB),KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_BTN1,KC_MS_BTN2,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,TO(L_COLE),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT,KC_TRANSPARENT,KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,KC_TRANSPARENT,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT,KC_TRANSPARENT,KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_WWW_BACK),
+      KC_TRANSPARENT,KC_ACL0,KC_ACL1,KC_ACL2,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,
+      MU_TOG,KC_TRANSPARENT,KC_MS_WH_UP,KC_MS_UP,KC_MS_WH_DOWN,KC_TRANSPARENT,TO(L_SYMB),
+      MU_MOD,KC_TRANSPARENT,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRANSPARENT,
+      KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,
+      KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_MS_BTN1,KC_MS_BTN2,
+      KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,TO(L_COLE),KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT,KC_TRANSPARENT,KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT,KC_TRANSPARENT,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT,KC_TRANSPARENT,KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_WWW_BACK),
 
   // emotes
   [L_EMOT] = KEYMAP(KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_COLN,KC_RPRN,KC_LPRN,KC_SLASH,KC_P,KC_D,KC_TRANSPARENT,KC_SCOLON,KC_RPRN,KC_LPRN,KC_SLASH,KC_P,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_D,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT),
 
   // qwerty mirror
-  [L_MIRR] = KEYMAP(KC_EQUAL,KC_MINUS,KC_0,KC_9,KC_8,KC_7,KC_TRANSPARENT,KC_BSLASH,KC_P,KC_O,KC_I,KC_U,KC_Y,KC_TRANSPARENT,KC_QUOTE,KC_SCOLON,KC_L,KC_K,KC_J,KC_H,KC_LSHIFT,KC_SLASH,KC_DOT,KC_COMMA,KC_M,KC_N,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_ESCAPE,KC_DELETE,KC_PGUP,KC_ENTER,KC_TAB,KC_PGDOWN,KC_6,KC_5,KC_4,KC_3,KC_2,KC_1,KC_ESCAPE,KC_TRANSPARENT,KC_T,KC_R,KC_E,KC_W,KC_Q,KC_TAB,KC_G,KC_F,KC_D,KC_S,KC_A,KC_GRAVE,KC_TRANSPARENT,KC_B,KC_V,KC_C,KC_X,KC_Z,KC_LSHIFT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_INSERT,KC_ESCAPE,KC_BSPACE,KC_END,KC_BSPACE,KC_SPACE),
-
-/* Keymap MACR: macros
- *
- *
- * ,---------------------------------------------------.           ,--------------------------------------------------.
- * |         |      |      |      |      |      | empb |           | emnb | emfs | emfb |      |      |      |        |
- * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |         | emtr |      |      |      |      |      |           |      | emun | emre | w-up |      |      |        |
- * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |         |      | emwr |      |      |      |------|           |------|      |w-left|w-down|w-rght|      |        |
- * |---------+------+------+------+------+------|  ##  |           |  ##  |------+------+------+------+------+--------|
- * |         |      |      |      |      |      |      |           |      |      |      |w-down|      |      |        |
- * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |       |      |      |      |      |                                       |      |      |      |      |      |
- *   `-----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-  [L_MACR] = KEYMAP(
+  [L_MIRR] = KEYMAP(
       // left hand
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, M_PDB, KC_TRNS, KC_TRNS, 
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+      KC_EQUAL,KC_MINUS,KC_0,KC_9,KC_8,KC_7,KC_TRANSPARENT,
+      KC_BSLASH,KC_P,KC_O,KC_I,KC_U,KC_Y,KC_TRANSPARENT,
+      KC_QUOTE,KC_SCOLON,KC_L,KC_K,KC_J,KC_H,
+      KC_LSHIFT,KC_SLASH,KC_DOT,KC_COMMA,KC_M,KC_N,KC_TRANSPARENT,
+      KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,
       // left thumb
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-
+      KC_LOCK,KC_DELETE,KC_PGUP,KC_SPACE,KC_ENTER,KC_PGDOWN,
+      
       // right hand
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, M_IPDB, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+      KC_6,KC_5,KC_4,KC_3,KC_2,KC_1,KC_ESCAPE,
+      KC_TRANSPARENT, KC_T,KC_R,KC_E,KC_W,KC_Q,KC_TAB,
+      KC_G,KC_F,KC_D,KC_S,KC_A,KC_GRAVE,
+      KC_TRANSPARENT,KC_B,KC_V,KC_C,KC_X,KC_Z,KC_LSHIFT,
+      KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,KC_TRANSPARENT,
       // right thumb
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-    ),
-
+      KC_INSERT,KC_ESCAPE,KC_HOME,KC_END,KC_BSPACE,KC_SPACE),
 };
 
 enum next_key_down_up {
@@ -273,7 +249,7 @@ void matrix_scan_user(void) {
         }
 
         SEQ_TWO_KEYS(KC_E, KC_E) {
-            SEND_STRING("cd /opt/app_emoney/application; source ../venv_emoney/bin/activate");
+            SEND_STRING("cd /opt/app_emoney/application; source ../venv_emoney/bin/activate\n");
         }
         SEQ_TWO_KEYS(KC_E, KC_S) {
             SEND_STRING("cd /opt/app_emoney/application; source ../venv_emoney/bin/activate\n./website/manage.py shell\n");
