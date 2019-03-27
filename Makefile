@@ -537,7 +537,7 @@ edit:
 
 .PHONY: mine
 mine:
-	make ergodox_ez-mine
+	make ergodox_ez:mine
 
 lib/%:
 	git submodule sync $?

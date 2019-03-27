@@ -1,1 +1,6 @@
-AUDIO_ENABLE = yes           # Audio output on port C6
+LEADER_ENABLE = yes
+KEY_LOCK_ENABLE = yes
+
+AUDIO_ENABLE = no
+BOOTMAGIC_ENABLE = no
+CONSOLE_ENABLE = no
