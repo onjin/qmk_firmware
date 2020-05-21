@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESCAPE, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,
       KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, TO(L_COLE),
       KC_GRAVE, KC_A, KC_S, KC_D, KC_F, KC_G,
-      KC_LSHIFT, CTL_T(KC_Z), KC_X, KC_C, KC_V, KC_B, ALL_T(KC_NO),
+      KC_LSHIFT, LCTL_T(KC_Z), KC_X, KC_C, KC_V, KC_B, ALL_T(KC_NO),
       KC_LCTL, MO(L_MIRR), KC_LEAD, KC_LGUI, KC_LALT,
       // left thumb
       KC_ESCAPE, KC_INSERT, KC_HOME, KC_SPC, KC_BSPC, KC_END,
@@ -61,14 +61,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS,      KC_7,   KC_8,   KC_9,   KC_0,   KC_MINUS,   KC_EQUAL,
       TO(L_SYMB),   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,       KC_BSLASH,
       KC_H,         KC_J,   KC_K,   KC_L,   LT(L_MEDI,  KC_SCOLON), KC_QUOTE,
-      MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, KC_DOT, CTL_T(KC_SLASH), KC_RSHIFT,
+      MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, KC_DOT, RCTL_T(KC_SLASH), KC_RSHIFT,
       KC_RALT, MO(L_EMOT), KC_LEAD, MO(L_MIRR), MO(L_SYMB),
       // right thumb
       KC_DELETE, KC_LOCK, KC_PGUP, KC_PGDOWN, KC_ENT, KC_SPC
     ),
 
   // colemak
-  [L_COLE] = LAYOUT_ergodox(KC_ESCAPE,KC_1,KC_2,KC_3,KC_4,KC_5,KC_6,KC_TAB,KC_Q,KC_W,KC_F,KC_P,KC_G,TO(L_MEDI),KC_GRAVE,KC_A,KC_R,KC_S,KC_T,KC_D,KC_LSHIFT,CTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,ALL_T(KC_NO),KC_LCTL,MO(L_MIRR),KC_LALT,KC_LGUI,KC_RALT,KC_ESCAPE,KC_INSERT,KC_HOME,KC_SPACE,KC_BSPACE,KC_END,KC_TRANSPARENT,KC_7,KC_8,KC_9,KC_0,KC_MINUS,KC_EQUAL,TO(0),KC_J,KC_L,KC_U,KC_Y,KC_SCOLON,KC_BSLASH,KC_H,KC_N,KC_E,KC_I,KC_O,KC_QUOTE,MEH_T(KC_NO),KC_K,KC_M,KC_COMMA,KC_DOT,CTL_T(KC_SLASH),KC_RSHIFT,KC_RALT,MO(L_EMOT),KC_TRANSPARENT,MO(L_MIRR),MO(L_SYMB),KC_DELETE,KC_ESCAPE,KC_PGUP,KC_PGDOWN,KC_TAB,KC_ENTER),
+  [L_COLE] = LAYOUT_ergodox(KC_ESCAPE,KC_1,KC_2,KC_3,KC_4,KC_5,KC_6,KC_TAB,KC_Q,KC_W,KC_F,KC_P,KC_G,TO(L_MEDI),KC_GRAVE,KC_A,KC_R,KC_S,KC_T,KC_D,KC_LSHIFT,LCTL_T(KC_Z),KC_X,KC_C,KC_V,KC_B,ALL_T(KC_NO),KC_LCTL,MO(L_MIRR),KC_LALT,KC_LGUI,KC_RALT,KC_ESCAPE,KC_INSERT,KC_HOME,KC_SPACE,KC_BSPACE,KC_END,KC_TRANSPARENT,KC_7,KC_8,KC_9,KC_0,KC_MINUS,KC_EQUAL,TO(0),KC_J,KC_L,KC_U,KC_Y,KC_SCOLON,KC_BSLASH,KC_H,KC_N,KC_E,KC_I,KC_O,KC_QUOTE,MEH_T(KC_NO),KC_K,KC_M,KC_COMMA,KC_DOT,RCTL_T(KC_SLASH),KC_RSHIFT,KC_RALT,MO(L_EMOT),KC_TRANSPARENT,MO(L_MIRR),MO(L_SYMB),KC_DELETE,KC_ESCAPE,KC_PGUP,KC_PGDOWN,KC_TAB,KC_ENTER),
 
   // symbols
   [L_SYMB] = LAYOUT_ergodox(
@@ -247,6 +247,23 @@ void matrix_scan_user(void) {
         }
         SEQ_TWO_KEYS(KC_E, KC_S) {
             SEND_STRING("cd /opt/app_emoney/application; source ../venv_emoney/bin/activate\n./website/manage.py shell\n");
+        }
+
+        SEQ_TWO_KEYS(KC_S, KC_S) {
+            SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop/\n");
+        }
+        SEQ_TWO_KEYS(KC_S, KC_L) {
+            SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop/\nssh lxc.p2ssolo\n");
+        }
+        SEQ_TWO_KEYS(KC_S, KC_E) {
+            SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop_dev_env/\n");
+        }
+        SEQ_TWO_KEYS(KC_S, KC_V) {
+            SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop_dev_env/\nvagrant ssh\n");
+        }
+
+        SEQ_TWO_KEYS(KC_N, KC_N) {
+            SEND_STRING("cd /home/onjin/Workspace/p/hint/szpital/niezgodnosci\n");
         }
       }
 
