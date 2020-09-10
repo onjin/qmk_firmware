@@ -1,17 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-// Define layer names
-#define L_BASE 0
-#define L_COLE 1
-#define L_SYMB 2
-#define L_MEDI 3
-#define L_EMOT 4
-#define L_MIRR 5
-
-// macros
-#define M_VERSION M(0)
-
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
     EPRM,
@@ -19,6 +8,7 @@ enum custom_keycodes {
     RGB_SLD,
 
 };
+
 
 // http://configure.ergodox-ez.com/keyboard_layouts/qmabvw/edit
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -90,6 +80,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_6, KC_5, KC_4, KC_3, KC_2, KC_1, KC_ESCAPE, KC_TRANSPARENT, KC_T, KC_R, KC_E, KC_W, KC_Q, KC_TAB, KC_G, KC_F, KC_D, KC_S, KC_A, KC_GRAVE, KC_TRANSPARENT, KC_B, KC_V, KC_C, KC_X, KC_Z, KC_LSHIFT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
         // right thumb
         KC_INSERT, KC_ESCAPE, KC_HOME, KC_END, KC_BSPACE, KC_SPACE),
+  [L_NAVR] = LAYOUT_miryoku(
+    KC_RST,  KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_AGIN, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_CAPS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_INS,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+    KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_ENT,  KC_BSPC, KC_DEL,  KC_NP,   KC_NP
+  ),
+
 };
 
 enum next_key_down_up {

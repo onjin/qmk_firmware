@@ -533,11 +533,13 @@ endif
 	if [ -f $(ERROR_FILE) ]; then printf "$(MSG_ERRORS)" & exit 1; fi;
 
 edit:
-	vim keyboards/ergodox_ez/keymaps/mine/keymap.c
+	nvim  keyboards/ergodox_ez/keymaps/mine/keymap.c
 
 .PHONY: mine
 mine:
 	make ergodox_ez:mine
+miryoku:
+	make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_ALPHAS=QWERTY
 
 lib/%:
 	git submodule sync $?
