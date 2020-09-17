@@ -534,6 +534,8 @@ endif
 
 edit:
 	nvim  keyboards/ergodox_ez/keymaps/mine/keymap.c
+cedit:
+	code  keyboards/ergodox_ez/keymaps/mine/keymap.c
 
 .PHONY: mine
 mine:
