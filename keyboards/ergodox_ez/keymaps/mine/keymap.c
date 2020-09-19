@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand 2
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, TO(L_COLE),
         // left hand 3
-        LT(L_SYMB, KC_GRAVE), LT(L_SYMB, KC_A), KC_S, KC_D, KC_F, KC_G,
+        LT(L_SYMB, KC_GRAVE), KC_A, KC_S, KC_D, KC_F, KC_G,
         // left hand 4
         KC_LSHIFT, LCTL_T(KC_Z), KC_X, KC_C, KC_V, KC_B, ALL_T(KC_NO),
         // left hand 5
