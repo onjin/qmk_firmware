@@ -12,7 +12,7 @@
 #define DEBOUNCE 25
 
 // Define layer names
-enum layers { L_BASE, L_COLE, L_SYMB, L_MEDI, L_EMOT, L_MIRR, L_NAVR};
+enum layers { L_BASE, L_SYMB, L_MEDI, BASE, NAVR, MOUR, MBO, MEDR, FUNL, NSL, NSSL  };
 
 // macros
 #define M_VERSION M(0)
@@ -45,3 +45,6 @@ KC_NO, KC_NO, KC_NO, KC_NO, K32,                               K37,   KC_NO, KC_
                                           KC_NO, KC_NO, \
                             K33,   K34,   KC_NO, KC_NO, K35,   K36 \
 )
+
+
+#define MIRYOKU_ALPHAS_QWERTY
