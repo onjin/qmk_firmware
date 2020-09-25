@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                        |      |      |       |      |      |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |      |       |      |      |      |
-     *                                 |   +  |   =  |------|       |------|   _  |  -   |
+     *                                 |   -  |   _  |------|       |------|   =  |  +   |
      *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
      */
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left thumb 1
         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
         // left thumb 2
-        KC_PLUS, KC_EQUAL, KC_TRANSPARENT,
+        KC_MINUS, KC_UNDERSCORE, KC_TRANSPARENT,
 
         // right hand 1
         KC_TRANSPARENT, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
@@ -121,7 +121,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right thumb 1
         KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
         // right thumb 2
-        KC_TRANSPARENT, KC_UNDERSCORE, KC_MINUS),
+        KC_TRANSPARENT, KC_EQUAL, KC_PLUS
+    ),
 
     // media
     [L_MEDI] = LAYOUT_ergodox(
