@@ -18,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,              KC_W,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,
     LGUI_T(KC_A),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_QUOT),
     KC_Z,              ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-    KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
+    MO(SYMB),          KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             MO(SYMB)
   ),
 #elif defined MIRYOKU_ALPHAS_DVORAK
   [BASE] = LAYOUT_miryoku(
@@ -79,60 +79,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [GAME] = LAYOUT_ergodox(
         // left hand 1
-        KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5, KC_TRNS,
+        _______, KC_1, KC_2, KC_3, KC_4, KC_5, _______,
         // left hand 2
-        KC_TRNS,  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_NA,
+        _______,  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_NA,
         // left hand 3
-        KC_TRNS, KC_A, KC_S, KC_D, KC_F, KC_G,
+        _______, KC_A, KC_S, KC_D, KC_F, KC_G,
         // left hand 4
-        KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_TRNS,
+        KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, _______,
         // left hand 5
         KC_LCTL, KC_NA, KC_NA, KC_LALT, LT(MEDR, KC_ESC),
 
         // left thumb 1
-        KC_TRNS, KC_INSERT, KC_HOME,
+        _______, KC_INSERT, KC_HOME,
         // left thumb 2
         KC_SPC, LT(MOUR, KC_TAB), LT(NAVR, KC_END),
 
         // right hand 1
         TO(BASE), KC_6, KC_7, KC_8, KC_9, KC_0, KC_EQUAL,
         // right hand 2
-        TO(L_SYMB), KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLASH,
+        TO(SYMB), KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLASH,
         // right hand 3
         KC_H, RSFT_T(KC_J), RCTL_T(KC_K), LALT_T(KC_L), LGUI_T(KC_QUOT), KC_NP,
         // right hand 4
-        MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, KC_DOT, KC_SLASH,
+        MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, ALGR_T(KC_DOT), KC_SLASH,
         // right hand 5
-        KC_RSHIFT, KC_RALT, KC_NA, KC_LEAD, KC_NA, MO(L_SYMB),
+        KC_RSHIFT, KC_RALT, KC_NA, KC_LEAD, KC_NA, MO(SYMB),
 
         // right thumb
         KC_DELETE, KC_LOCK, KC_PGUP, KC_PGDOWN, LT(NSSL, KC_ENT), LT(NSL, KC_BSPC)
     ),
 
-
-    /* Keymap 2: Symbols layer ((idea))
-     *
-     * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * | ESC    |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
-     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |   !  |   @  |   [  |   ]  |   |  |  L0  |           |  L3  |  UP  |   7  |   8  |   9  |   *  |  F12   |
-     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| DOWN |   4  |   5  |   6  |   +  |        |
-     * |--------+------+------+------+------+------|      |           | POW  |------+------+------+------+------+--------|
-     * |        |   %  |   ^  |   {  |   }  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
-     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      |      |      |      |      |                                       |      |      |      |      |      |
-     *   `----------------------------------'                                       `----------------------------------'
-     *                                        ,-------------.       ,-------------.
-     *                                        |      |      |       |      |      |
-     *                                 ,------|------|------|       |------+------+------.
-     *                                 |      |      |      |       |      |      |      |
-     *                                 |   -  |   _  |------|       |------|   =  |  +   |
-     *                                 |      |      |      |       |      |      |      |
-     *                                 `--------------------'       `--------------------'
-     */
   [NAVR] = LAYOUT_miryoku(
-    KC_RST,  KC_NA,   KC_NA,   KC_NA,   TO(GAME),   KC_AGIN, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE,
+    KC_RST,  WEBUSB_PAIR,   KC_NA,   KC_NA,   TO(GAME),   KC_AGIN, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS,
     KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
     KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_ENT,  KC_BSPC, KC_DEL,  KC_NP,   KC_NP
@@ -143,16 +121,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU,
     KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_BTN1, KC_BTN3, KC_BTN2, KC_NP,   KC_NP
   ),
-  [MBO] = LAYOUT_miryoku(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_NP,   KC_NP,   KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN3, KC_BTN2, KC_NP,   KC_NP
-  ),
   [MEDR] = LAYOUT_miryoku(
-    LALT(KC_Q),  LALT(KC_W),   LALT(KC_E),   LALT(KC_R),   LALT(KC_T),   KC_TOG,  KC_MOD,  KC_HUI,  KC_SAI,  KC_VAI,
+    KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_TOG,  KC_MOD,  KC_HUI,  KC_SAI,  KC_VAI,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_NU,
-    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_LEAD,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
+    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_LEAD, KC_NU,   KC_NU,   KC_NU,   KC_NU,
     KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_MSTP, KC_MPLY, KC_MUTE, KC_NP,   KC_NP
   ),
   [FUNL] = LAYOUT_miryoku(
@@ -173,39 +145,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, KC_NA,   KC_NA,   KC_NA,   KC_ALGR, KC_NA,
     KC_NP,   KC_NP,   KC_GT,   KC_RPRN, KC_UNDS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
   ),
-    [L_SYMB] = LAYOUT_ergodox(
-        // left hand 1
-        KC_ESCAPE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRANSPARENT,
-        // left hand 2
-        KC_TRANSPARENT, KC_EXLM, KC_AT, KC_LBRACKET, KC_RBRACKET, KC_PIPE, TO(0),
-        // left hand 3
-        KC_TRANSPARENT, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_GRAVE,
-        // left hand 4
-        KC_TRANSPARENT, KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_TILD, KC_TRANSPARENT,
-        // left hand 5
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
 
-        // left thumb 1
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        // left thumb 2
-        KC_MINUS, KC_UNDERSCORE, KC_TRANSPARENT,
-
-        // right hand 1
-        KC_TRANSPARENT, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
-        // right hand 2
-        KC_TRANSPARENT, KC_UP, KC_7, KC_8, KC_9, KC_ASTR, KC_F12,
-        // right hand 3
-        KC_DOWN, KC_4, KC_5, KC_6, KC_PLUS, KC_TRANSPARENT,
-        // right hand 4
-        KC_SYSTEM_POWER, KC_AMPR, KC_1, KC_2, KC_3, KC_BSLASH, KC_TRANSPARENT,
-        // right hand 5
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_0, KC_EQUAL, KC_TRANSPARENT,
-
-        // right thumb 1
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        // right thumb 2
-        KC_TRANSPARENT, KC_EQUAL, KC_PLUS
-    ),
+    /* Keymap 2: Symbols layer ((idea))
+     *
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * |        |      |      |   [  |   ]  |      |      |           |      |   /  |   7  |   8  |   9  |   *  |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |      |      |   (  |   )  |      |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |      |      |   {  |   }  |      |      |           |      |   .  |   1  |   2  |   3  |   =  |        |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   |      |      |      |      |      |                                       |      |      |      |      |      |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        |      |      |       |      |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |   )  |   _  |------|       |------| Enter| Bsp  |
+     *                                 |      |      |      |       |      |      |      |
+     *                                 `--------------------'       `--------------------'
+     */
+  [SYMB] = LAYOUT_miryoku(
+    KC_NP,   KC_NP,   KC_LBRC, KC_RBRC, KC_NP,   KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST,
+    KC_NP,   KC_NP,   KC_LPRN, KC_RPRN, KC_NP,   KC_PMNS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+    KC_NP,   KC_NP,   KC_LCBR, KC_RCBR, KC_NP,   KC_PDOT, KC_P1,   KC_P2,   KC_P3,   KC_PEQL,
+    KC_NP,   KC_NP,   KC_NP,   KC_NP,   KC_NP,   KC_PENT, KC_BSPC, KC_P0,   KC_NP,   KC_NP
+  ),
 
 };
 

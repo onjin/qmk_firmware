@@ -12,7 +12,7 @@
 #define DEBOUNCE 25
 
 // Define layer names
-enum layers { BASE, GAME, NAVR, MOUR, MBO, MEDR, FUNL, NSL, NSSL , L_SYMB };
+enum layers { BASE, GAME, NAVR, MOUR, MEDR, FUNL, NSL, NSSL , SYMB };
 
 // macros
 #define M_VERSION M(0)
@@ -40,7 +40,7 @@ KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_
 KC_NO, K00,   K01,   K02,   K03,   K04,   KC_NO, KC_NO, K05,   K06,   K07,   K08,   K09,   KC_NO, \
 KC_NO, K10,   K11,   K12,   K13,   K14,                 K15,   K16,   K17,   K18,   K19,   KC_NO, \
 KC_NO, K20,   K21,   K22,   K23,   K24,   KC_NO, KC_NO, K25,   K26,   K27,   K28,   K29,   KC_NO, \
-KC_NO, KC_NO, KC_NO, KC_NO, K32,                               K37,   KC_NO, KC_NO, KC_NO, KC_NO, \
+N30  , N31  , KC_NO, KC_NO, K32,                               K37,   KC_NO, KC_NO, N38,   N39  , \
                                    KC_NO, KC_NO, KC_NO, KC_NO, \
                                           KC_NO, KC_NO, \
                             K33,   K34,   KC_NO, KC_NO, K35,   K36 \
