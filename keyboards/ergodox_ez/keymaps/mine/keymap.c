@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MEDR] = LAYOUT_miryoku(
     LALT(KC_Q),  LALT(KC_W),   LALT(KC_E),   LALT(KC_R),   LALT(KC_T),   KC_TOG,  KC_MOD,  KC_HUI,  KC_SAI,  KC_VAI,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_NU,
-    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
+    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_LEAD,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
     KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_MSTP, KC_MPLY, KC_MUTE, KC_NP,   KC_NP
   ),
   [FUNL] = LAYOUT_miryoku(
