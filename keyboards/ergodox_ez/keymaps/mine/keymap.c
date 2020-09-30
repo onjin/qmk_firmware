@@ -12,54 +12,10 @@ enum custom_keycodes {
 // http://configure.ergodox-ez.com/keyboard_layouts/qmabvw/edit
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-
-#if defined MIRYOKU_ALPHAS_QWERTY
-  [BASE] = LAYOUT_miryoku(
-    KC_Q,              KC_W,              KC_E,              KC_R,              KC_T,              KC_Y,              KC_U,              KC_I,              KC_O,              KC_P,
-    LGUI_T(KC_A),      LALT_T(KC_S),      LCTL_T(KC_D),      LSFT_T(KC_F),      KC_G,              KC_H,              LSFT_T(KC_J),      LCTL_T(KC_K),      LALT_T(KC_L),      LGUI_T(KC_QUOT),
-    KC_Z,              ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_N,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-    MO(SYMB),          KC_LEAD,           LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_LEAD,           MO(SYMB)
-  ),
-#elif defined MIRYOKU_ALPHAS_DVORAK
-  [BASE] = LAYOUT_miryoku(
-    KC_QUOT,           KC_COMM,           KC_DOT,            KC_P,              KC_Y,              KC_F,              KC_G,              KC_C,              KC_R,              KC_L,
-    LGUI_T(KC_A),      LALT_T(KC_O),      LCTL_T(KC_E),      LSFT_T(KC_U),      KC_I,              KC_D,              LSFT_T(KC_H),      LCTL_T(KC_T),      LALT_T(KC_N),      LGUI_T(KC_S),
-    KC_SLSH,           ALGR_T(KC_Q),      KC_J,              KC_K,              KC_X,              KC_B,              KC_M,              KC_W,              ALGR_T(KC_V),      KC_Z,
-    KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
-  ),
-#elif defined MIRYOKU_ALPHAS_COLEMAK
-  [BASE] = LAYOUT_miryoku(
-    KC_Q,              KC_W,              KC_F,              KC_P,              KC_G,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
-    LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_D,              KC_H,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
-    KC_Z,              ALGR_T(KC_X),      KC_C,              KC_V,              KC_B,              KC_K,              KC_M,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-    KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
-  ),
-#elif defined MIRYOKU_ALPHAS_COLEMAKDH
-  [BASE] = LAYOUT_miryoku(
-    KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
-    LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_G,              KC_K,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
-    KC_Z,              ALGR_T(KC_X),      KC_C,              KC_D,              KC_V,              KC_M,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-    KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
-  ),
-#elif defined MIRYOKU_ALPHAS_WORKMAN
-  [BASE] = LAYOUT_miryoku(
-    KC_Q,              KC_D,              KC_R,              KC_W,              KC_B,              KC_J,              KC_F,              KC_U,              KC_P,              KC_QUOT,
-    LGUI_T(KC_A),      LALT_T(KC_S),      LCTL_T(KC_H),      LSFT_T(KC_T),      KC_G,              KC_Y,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_O),      LGUI_T(KC_I),
-    KC_Z,              ALGR_T(KC_X),      KC_M,              KC_C,              KC_V,              KC_K,              KC_L,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-    KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
-  ),
-#else
-  [BASE] = LAYOUT_miryoku(
-    KC_Q,              KC_W,              KC_F,              KC_P,              KC_B,              KC_J,              KC_L,              KC_U,              KC_Y,              KC_QUOT,
-    LGUI_T(KC_A),      LALT_T(KC_R),      LCTL_T(KC_S),      LSFT_T(KC_T),      KC_G,              KC_M,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_I),      LGUI_T(KC_O),
-    KC_Z,              ALGR_T(KC_X),      KC_C,              KC_D,              KC_V,              KC_K,              KC_H,              KC_COMM,           ALGR_T(KC_DOT),    KC_SLSH,
-    KC_NP,             KC_NP,             LT(MEDR, KC_ESC),  LT(NAVR, KC_SPC),  LT(MOUR, KC_TAB),  LT(NSSL, KC_ENT),  LT(NSL, KC_BSPC),  LT(FUNL, KC_DEL),  KC_NP,             KC_NP
-  ),
-#endif
-    /* Keymap: Game layer ((idea))
+    /* Keymap 0: Base layer ((idea))
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * | ESC    |   1  |   2  |   3  |   4  |   5  |  LM  |           |   -  |   6  |   7  |   8  |   9  |   0  |   =    |
+     * | ESC    |   1  |   2  |   3  |   4  |   5  |      |           |   -  |   6  |   7  |   8  |   9  |   0  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * | Tab    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  L1  |   Y  |   U  |   I  |   O  |   P  |   \    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -73,89 +29,102 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                        |  Esc |  Ins |       |  Del | Lock |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      | Home |       | PgUp |      |      |
-     *                                 | Space|  Tab |------|       |------| Enter| Bspc |
-     *                                 |      | /MOUR|  End |       | PgDn | /NSSL| /NSL |
+     *                                 | Space| BkSp |------|       |------| Enter|Space |
+     *                                 |      |      |  End |       | PgDn |      |      |
      *                                 `--------------------'       `--------------------'
      */
-    [GAME] = LAYOUT_ergodox(
-        // left hand 1
-        _______, KC_1, KC_2, KC_3, KC_4, KC_5, _______,
-        // left hand 2
-        _______,  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_NA,
-        // left hand 3
-        _______, KC_A, KC_S, KC_D, KC_F, KC_G,
-        // left hand 4
-        KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, _______,
-        // left hand 5
-        KC_LCTL, KC_NA, KC_NA, KC_LALT, LT(MEDR, KC_ESC),
+    [BASE] = LAYOUT_ergodox(
+        // left hand 7/7/6/7/5
+        // ____  _______           _______  _______  _______  _______  _______
+        KC_ESC,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    TO(COLE),
+        KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    KC_NO,
+        KC_GRV,  LT(MEDI, KC_A),   KC_S,    KC_D,    KC_F,    KC_G,
+        KC_LSFT, LCTL_T(KC_Z),     KC_X,    KC_C,    KC_V,    KC_B,    ALL_T(KC_NO),
+        KC_LCTL, MO(MIRR),         KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
 
-        // left thumb 1
-        _______, KC_INSERT, KC_HOME,
-        // left thumb 2
-        KC_SPC, LT(MOUR, KC_TAB), LT(NAVR, KC_END),
+        KC_NO,   KC_INSERT,
+                                   KC_HOME,
+        KC_SPC, KC_BSPC, KC_END,
 
-        // right hand 1
-        TO(BASE), KC_6, KC_7, KC_8, KC_9, KC_0, KC_EQUAL,
-        // right hand 2
-        TO(SYMB), KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLASH,
-        // right hand 3
-        KC_H, RSFT_T(KC_J), RCTL_T(KC_K), LALT_T(KC_L), LGUI_T(KC_QUOT), KC_NP,
-        // right hand 4
-        MEH_T(KC_NO), KC_N, KC_M, KC_COMMA, ALGR_T(KC_DOT), KC_SLASH,
-        // right hand 5
-        KC_RSHIFT, KC_RALT, KC_NA, KC_LEAD, KC_NA, MO(SYMB),
+        // right hand
+        // ____  _______  _______  _______  _______  _______  _______
+        TO(GAME),KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQUAL,
+        KC_NO,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH,
+                 KC_H,    KC_J,    KC_K,    KC_L,    LT(MEDI, KC_SCOLON), KC_QUOTE,
+        KC_NO,   KC_N,    KC_M,    KC_COMM, KC_DOT,  RCTL_T(KC_SLASH), KC_RSHIFT,
+                          KC_RALT, KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
 
         // right thumb
-        KC_DELETE, KC_LOCK, KC_PGUP, KC_PGDOWN, LT(NSSL, KC_ENT), LT(NSL, KC_BSPC)
+        KC_DEL, KC_LOCK,
+        KC_PGUP,
+        KC_PGDOWN, KC_ENT, KC_SPC
+    ),
+    [GAME] = LAYOUT_ergodox(
+        // left hand 7/7/6/7/5
+        // ____  _______           _______  _______  _______  _______  _______
+        KC_ESC,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    KC_NO,
+        KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    TO(COLE),
+        KC_GRV,  KC_A,             KC_S,    KC_D,    KC_F,    KC_G,
+        KC_LSFT, KC_Z,             KC_X,    KC_C,    KC_V,    KC_B,    ALL_T(KC_NO),
+        KC_LCTL, MO(MIRR),         KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
+
+        KC_NO,   KC_INSERT,
+                                   KC_HOME,
+        KC_SPC, KC_BSPC, KC_END,
+
+        // right hand
+        // ____  _______  _______  _______  _______  _______  _______
+        TO(BASE),KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQUAL,
+        KC_NO,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH,
+                 KC_H,    KC_J,    KC_K,    KC_L,    LT(MEDI, KC_SCOLON), KC_QUOTE,
+        MEH_T(KC_NO),     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH, KC_RSHIFT,
+                          KC_RALT, KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
+
+        // right thumb
+        KC_DEL, KC_LOCK,
+        KC_PGUP,
+        KC_PGDOWN, KC_ENT, KC_SPC
     ),
 
-  [NAVR] = LAYOUT_miryoku(
-    KC_RST,  WEBUSB_PAIR,   KC_NA,   KC_NA,   TO(GAME),   KC_AGIN, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS,
-    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-    KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_ENT,  KC_BSPC, KC_DEL,  KC_NP,   KC_NP
-  ),
-  [MOUR] = LAYOUT_miryoku(
-    KC_RST,  KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_NU,   KC_NU,   KC_NU,   KC_NU,   KC_NU,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NU,
-    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_NU,
-    KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_BTN1, KC_BTN3, KC_BTN2, KC_NP,   KC_NP
-  ),
-  [MEDR] = LAYOUT_miryoku(
-    KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_TOG,  KC_MOD,  KC_HUI,  KC_SAI,  KC_VAI,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NA,   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_NU,
-    KC_NA,   KC_ALGR, KC_NA,   KC_NA,   KC_NA,   KC_LEAD, KC_NU,   KC_NU,   KC_NU,   KC_NU,
-    KC_NP,   KC_NP,   KC_NA,   KC_NA,   KC_NA,   KC_MSTP, KC_MPLY, KC_MUTE, KC_NP,   KC_NP
-  ),
-  [FUNL] = LAYOUT_miryoku(
-    KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_RST,
-    KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SLCK, KC_NA,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, KC_NA,   KC_NA,   KC_NA,   KC_ALGR, KC_NA,
-    KC_NP,   KC_NP,   KC_APP,  KC_SPC,  KC_TAB,  KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
-  ),
-  [NSL] = LAYOUT_miryoku(
-    KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_RST,
-    KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  KC_NA,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NA,   KC_NA,   KC_NA,   KC_ALGR, KC_NA,
-    KC_NP,   KC_NP,   KC_DOT,  KC_0,    KC_MINS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
-  ),
-  [NSSL] = LAYOUT_miryoku(
-    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, KC_NA,   KC_NA,   KC_NA,   KC_NA,   KC_RST,
-    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, KC_NA,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, KC_NA,   KC_NA,   KC_NA,   KC_ALGR, KC_NA,
-    KC_NP,   KC_NP,   KC_GT,   KC_RPRN, KC_UNDS, KC_NA,   KC_NA,   KC_NA,   KC_NP,   KC_NP
-  ),
+    // colemak
+    [COLE] = LAYOUT_ergodox(
+        // left hand 7/7/6/7/5
+        // ____  _______           _______  _______  _______  _______  _______
+        KC_ESC,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    TO(BASE),
+        KC_TAB,  KC_Q,             KC_W,    KC_F,    KC_P,    KC_G,    KC_NO,
+        KC_GRV,  LT(MEDI, KC_A),   KC_R,    KC_S,    KC_T,    KC_D,
+        KC_LSFT, LCTL_T(KC_Z),     KC_X,    KC_C,    KC_V,    KC_B,    ALL_T(KC_NO),
+        KC_LCTL, MO(MIRR),         KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
+
+        // left thumb
+        KC_NO,   KC_INSERT,
+                                   KC_HOME,
+        KC_SPC,  KC_BSPC, KC_END,
+
+        // right hand
+        // ____  _______  _______  _______  _______  _______           _______
+        KC_NO,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,             KC_EQUAL,
+        KC_NO,   KC_J,    KC_L,    KC_U,    KC_Y,    LT(MEDI, KC_SCLN),KC_BSLS,
+                 KC_H,    KC_N,    KC_E,    KC_I,    KC_O,             KC_QUOTE,
+        KC_NO,   KC_K,    KC_M,    KC_COMM, KC_DOT,  RCTL_T(KC_SLASH), KC_RSFT,
+        KC_RALT, KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
+
+        // right thumb
+        KC_DEL, KC_LOCK,
+        KC_PGUP,
+        KC_PGDOWN, KC_ENT, KC_SPC
+    ),
 
     /* Keymap 2: Symbols layer ((idea))
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+     * | ESC    |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |      |      |   [  |   ]  |      |      |           |      |   /  |   7  |   8  |   9  |   *  |        |
+     * |        |   !  |   @  |   [  |   ]  |   |  |  L0  |           |  L3  |  UP  |   7  |   8  |   9  |   *  |  F12   |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |      |      |   (  |   )  |      |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
-     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |      |      |   {  |   }  |      |      |           |      |   .  |   1  |   2  |   3  |   =  |        |
+     * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| DOWN |   4  |   5  |   6  |   +  |        |
+     * |--------+------+------+------+------+------|      |           | POW  |------+------+------+------+------+--------|
+     * |        |   %  |   ^  |   {  |   }  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
@@ -163,19 +132,87 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                        |      |      |       |      |      |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |      |       |      |      |      |
-     *                                 |   )  |   _  |------|       |------| Enter| Bsp  |
+     *                                 |   -  |   _  |------|       |------|   =  |  +   |
      *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
      */
-  [SYMB] = LAYOUT_miryoku(
-    KC_NP,   KC_NP,   KC_LBRC, KC_RBRC, KC_NP,   KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST,
-    KC_NP,   KC_NP,   KC_LPRN, KC_RPRN, KC_NP,   KC_PMNS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-    KC_NP,   KC_NP,   KC_LCBR, KC_RCBR, KC_NP,   KC_PDOT, KC_P1,   KC_P2,   KC_P3,   KC_PEQL,
-    KC_NP,   KC_NP,   KC_NP,   KC_NP,   KC_NP,   KC_PENT, KC_BSPC, KC_P0,   KC_NP,   KC_NP
-  ),
+    [SYMB] = LAYOUT_ergodox(
+        // left hand 1
+        KC_ESCAPE, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRANSPARENT,
+        // left hand 2
+        KC_TRANSPARENT, KC_EXLM, KC_AT, KC_LBRACKET, KC_RBRACKET, KC_PIPE, TO(0),
+        // left hand 3
+        KC_TRANSPARENT, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_GRAVE,
+        // left hand 4
+        KC_TRANSPARENT, KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_TILD, KC_TRANSPARENT,
+        // left hand 5
+        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+
+        // left thumb 1
+        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+        // left thumb 2
+        KC_MINUS, KC_UNDERSCORE, KC_TRANSPARENT,
+
+        // right hand 1
+        KC_TRANSPARENT, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
+        // right hand 2
+        TO(MEDI), KC_UP, KC_7, KC_8, KC_9, KC_ASTR, KC_F12,
+        // right hand 3
+        KC_DOWN, KC_4, KC_5, KC_6, KC_PLUS, KC_TRANSPARENT,
+        // right hand 4
+        KC_SYSTEM_POWER, KC_AMPR, KC_1, KC_2, KC_3, KC_BSLASH, KC_TRANSPARENT,
+        // right hand 5
+        KC_TRANSPARENT, KC_TRANSPARENT, KC_0, KC_EQUAL, KC_TRANSPARENT,
+
+        // right thumb 1
+        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+        // right thumb 2
+        KC_TRANSPARENT, KC_EQUAL, KC_PLUS
+    ),
+
+    // media
+    [MEDI] = LAYOUT_ergodox(
+        // left hand 7/7/6/7/5
+        // ____  _______  _______  _______  _______  _______  _______
+        KC_NO,   KC_TOG,  KC_MOD,  KC_HUI,  KC_SAI,  KC_VAI,  KC_NO,
+        KC_RST,  KC_NO,   KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_D, TO(SYMB),
+        KC_NO,   KC_NO,   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,
+        KC_NO,   KC_NO,   KC_ACL0, KC_ACL1, KC_ACL2, KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BTN1,
+
+        // left thumb
+        KC_NO,   KC_NO,
+                          KC_NO,
+        KC_BTN3, KC_BTN2, KC_NO,
+
+        // right hand
+        // ____  _______  _______  _______  _______  _______  _______
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        TO(COLE),KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_NO,
+                 KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_NO,   KC_MPLY,
+        KC_NO,   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_NO,   KC_NO,
+                          KC_MUTE, KC_NO,   KC_NO,   KC_NO,   KC_NO,
+
+        // right thumb
+        KC_NO,   KC_NO,
+        KC_NO,
+        KC_NO,   KC_MSTP, KC_MPLY
+    ),
+
+    // qwerty mirror
+    [MIRR] = LAYOUT_ergodox(
+        // left hand
+        KC_EQUAL, KC_MINUS, KC_0, KC_9, KC_8, KC_7, KC_TRANSPARENT, KC_BSLASH, KC_P, KC_O, KC_I, KC_U, KC_Y, KC_TRANSPARENT, KC_QUOTE, KC_SCOLON, KC_L, KC_K, KC_J, KC_H, KC_LSHIFT, KC_SLASH, KC_DOT, KC_COMMA, KC_M, KC_N, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+        // left thumb
+        KC_LOCK, KC_DELETE, KC_PGUP, KC_SPACE, KC_ENTER, KC_PGDOWN,
+
+        // right hand
+        KC_6, KC_5, KC_4, KC_3, KC_2, KC_1, KC_ESCAPE, KC_TRANSPARENT, KC_T, KC_R, KC_E, KC_W, KC_Q, KC_TAB, KC_G, KC_F, KC_D, KC_S, KC_A, KC_GRAVE, KC_TRANSPARENT, KC_B, KC_V, KC_C, KC_X, KC_Z, KC_LSHIFT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+        // right thumb
+        KC_INSERT, KC_ESCAPE, KC_HOME, KC_END, KC_BSPACE, KC_SPACE),
+
 
 };
-
 enum next_key_down_up {
     NK_DOWN_UP,
     NK_DOWN,
@@ -256,11 +293,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 LEADER_EXTERNS();
 
 void matrix_scan_user(void) {
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
-
     LEADER_DICTIONARY() {
         leading = false;
         leader_end();
@@ -295,38 +327,36 @@ void matrix_scan_user(void) {
 
     uint8_t layer = biton32(layer_state);
 
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+
     switch (layer) {
+        case COLE:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            break;
         case GAME:
             ergodox_right_led_1_on();
             break;
-        case NAVR:
+        case MEDI:
             ergodox_right_led_2_on();
             break;
-        case MOUR:
-            ergodox_right_led_2_on();
-            break;
-        case MEDR:
-            ergodox_right_led_2_on();
-            break;
-        case FUNL:
-            ergodox_right_led_2_on();
-            break;
-        case NSL:
-            ergodox_right_led_2_on();
-            break;
-        case NSSL:
+        case MIRR:
             ergodox_right_led_2_on();
             break;
         case SYMB:
-            ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
         default:
             break;
+            break;
     }
-    led_t led_state = host_keyboard_led_state();
 
+    led_t led_state = host_keyboard_led_state();
     if (led_state.caps_lock) {
         ergodox_right_led_3_on();
     }
 };
+
