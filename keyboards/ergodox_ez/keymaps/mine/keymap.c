@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH,
                  KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),     LALT_T(KC_L),    LT(MEDI, KC_SCOLON), KC_QUOTE,
         KC_NO,   KC_N,    KC_M,             KC_COMM, ALGR_T(KC_DOT),   RCTL_T(KC_SLASH), KC_RSHIFT,
-                          KC_RALT,          KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
+                          MO(SYMB),         KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
 
         // right thumb
         KC_DEL, KC_LOCK,
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,          KC_BSLS,
                  KC_H,    RSFT_T(KC_N),     RCTL_T(KC_E),    LALT_T(KC_I),    LT(MEDI, KC_O),             KC_QUOTE,
         KC_NO,   KC_K,    KC_M,    KC_COMM, ALGR_T(KC_DOT),  RCTL_T(KC_SLASH), KC_RSFT,
-        KC_RALT, KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
+        MO(SYMB),KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
 
         // right thumb
         KC_DEL, KC_LOCK,
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLASH,
                  KC_H,    KC_J,    KC_K,    KC_L,    LT(MEDI, KC_SCOLON), KC_QUOTE,
         MEH_T(KC_NO),     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLASH, KC_RSHIFT,
-                          KC_RALT, KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
+                          MO(SYMB),KC_RGUI, KC_LEAD, MO(MIRR), MO(SYMB),
 
         // right thumb
         KC_DEL, KC_LOCK,
@@ -325,20 +325,19 @@ void matrix_scan_user(void) {
 
     switch (layer) {
         case COLE:
-            ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
         case GAME:
             ergodox_right_led_1_on();
             break;
         case MEDI:
-            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
             break;
         case MIRR:
-            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
             break;
         case SYMB:
-            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
             break;
         default:
             break;
@@ -347,6 +346,8 @@ void matrix_scan_user(void) {
 
     led_t led_state = host_keyboard_led_state();
     if (led_state.caps_lock) {
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
         ergodox_right_led_3_on();
     }
 };
