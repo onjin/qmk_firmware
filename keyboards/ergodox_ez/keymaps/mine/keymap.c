@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // ____  _______  _______  _______  _______  _______  _______
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_NO,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  KC_NO,
-                 KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_NO,   KC_MPLY,
+                 KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_NO,   KC_NO,
         KC_NO,   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_NO,   KC_NO,
                           KC_MUTE, KC_NO,   KC_NO,   KC_NO,   KC_NO,
         // right thumb
