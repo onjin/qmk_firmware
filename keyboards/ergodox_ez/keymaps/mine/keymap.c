@@ -115,24 +115,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_PGDOWN, KC_ENT, KC_SPC
     ),
 
+
     /* Keymap 2: Symbols layer ((idea))
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * | ESC    |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |   !  |   @  |   [  |   ]  |   |  |      |           |      |   /  |   7  |   8  |   9  |   *  |  F12   |
+     * |        |   #  |   ^  |   [  |   ]  |   \  |      |           |      |   /  |   7  |   8  |   9  |   *  |  F12   |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |   #  |   $  |   (  |   )  |   `  |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
+     * |        |   &  |   $  |   (  |   )  |   !  |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |   %  |   ^  |   {  |   }  |   ~  |      |           |      |   .  |   1  |   2  |   3  |   =  |        |
+     * |        |   %  |   @  |   {  |   }  |   |  |      |           |      |   0  |   1  |   2  |   3  |   =  |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      |      |      |      |      |                                       |      |      |      |      |      |
+     *   |      |      |      |   ~  |  `   |                                       |      |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |      |       |      |      |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |      |       |      |      |      |
-     *                                 |   -  |   _  |------|       |------| Enter|  0   |
+     *                                 |   -  |   _  |------|       |------| Enter|  ,   |
      *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
      */
@@ -140,10 +141,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand 7/7/6/7/5
         // ____  _______  _______  _______  _______  _______  _______
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NO,
-        KC_NO,   KC_EXLM, KC_AT,   KC_LBRC, KC_RBRC, KC_PIPE, KC_NO,
-        KC_NO,   KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRAVE,
-        KC_NO,   KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_TILD, KC_NO,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_HASH, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
+        KC_NO,   KC_AMPR, KC_DLR,  KC_LPRN, KC_RPRN, KC_EXLM,
+        KC_NO,   KC_PERC, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_GRAVE,
         // left thumb
         KC_NO,   KC_NO,
                           KC_NO,
@@ -154,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         KC_NO,   KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_F12,
                  KC_PMNS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_NO,
-        KC_NO,   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_NO,
+        KC_NO,   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_CAPS,
                           KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 
         // right thumb
