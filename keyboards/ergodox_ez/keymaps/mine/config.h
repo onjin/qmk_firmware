@@ -11,9 +11,6 @@
 #undef  DEBOUNCE
 #define DEBOUNCE 25
 
-// Define layer names
-enum layers { BASE, GAME, COLE, SYMB, MEDI, MIRR};
-
 // macros
 #define M_VERSION M(0)
 

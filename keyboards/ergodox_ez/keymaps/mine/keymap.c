@@ -1,6 +1,9 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
+// Define layer names
+enum layers { BASE, GAME, COLE, SYMB, MEDI, MIRR};
+
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
     EPRM,
@@ -312,12 +315,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
+        #ifdef RGBLIGHT_ENABLE
         case RGB_SLD:
             if (record->event.pressed) {
                 rgblight_mode(1);
             }
             return false;
             break;
+        # endif
     }
     return true;
 }
