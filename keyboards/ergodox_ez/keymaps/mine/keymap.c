@@ -166,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,          _______, _______, _______, _______, _______,
         _______, KC_A,             KC_S,    KC_D,    KC_F,    _______,
         _______, _______,          KC_X,    _______, _______, _______, _______,
-        _______, _______,          _______, _______, KC_ESC,
+        _______, _______,          _______, _______, _______,
 
         KC_NO,   KC_INSERT,
                                    KC_HOME,
@@ -403,6 +403,9 @@ void matrix_scan_user(void) {
         SEQ_TWO_KEYS(KC_S, KC_S) { SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop/\n"); }
         SEQ_TWO_KEYS(KC_S, KC_L) { SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop/\nssh lxc.p2ssolo\n"); }
         SEQ_TWO_KEYS(KC_N, KC_N) { SEND_STRING("cd /home/onjin/Workspace/p/hint/szpital/niezgodnosci\n"); }
+
+        SEQ_ONE_KEY(KC_F) { SEND_STRING("$(fzf)"); }
+        SEQ_ONE_KEY(KC_Q) { SEND_STRING("qmk compile && qmk flash\n"); }
     }
 
     uint8_t layer = biton32(layer_state);
