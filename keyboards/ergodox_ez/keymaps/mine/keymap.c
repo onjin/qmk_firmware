@@ -2,7 +2,7 @@
 #include "version.h"
 
 // Define layer names
-enum layers { BASE, GAME, COLE, WORK, SYMB, MEDI, MIRR};
+enum layers { BASE, GAME, COLE, WORK, SYMB, NUMP, MEDI, MIRR};
 
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                        ,-------------.       ,-------------.
      *                                        |      |  Ins |       |  Del | Lock |
      *                                 ,------|------|------|       |------+------+------.
-     *                                 |      |      | Home |       | PgUp |      |      |
+     *                                 |      |      | Home |       | PgUp |      |NUMP/ |
      *                                 | Space| BkSp |------|       |------| Enter|Space |
      *                                 |      |      |  End |       | PgDn |      |      |
      *                                 `--------------------'       `--------------------'
@@ -55,12 +55,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,
                  KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LT(MEDI, KC_SCOLON), KC_QUOTE,
         TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH, KC_RSHIFT,
-                          MO(SYMB),         KC_RGUI,        KC_LEAD,        MO(MIRR), MO(SYMB),
+                          MO(SYMB),         KC_RGUI,        KC_LEAD,        MO(MIRR), MO(NUMP),
 
         // right thumb
         KC_DEL, KC_LOCK,
         KC_PGUP,
-        KC_PGDOWN, KC_ENT, KC_SPC
+        KC_PGDOWN, KC_ENT, LT(NUMP, KC_SPC)
     ),
 
     /* Base layer (COLEMAK)
@@ -211,15 +211,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Symbols layer
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * | ESC    |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
+     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |   #  |   ^  |   [  |   ]  |   \  |      |           |      |   /  |   7  |   8  |   9  |   *  |  F12   |
+     * |        |   #  |   ^  |   [  |   ]  |   \  |      |           |      |   /  |   !  |   _  |   =  |   *  |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |   &  |   $  |   (  |   )  |   |  |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
+     * |        |   &  |   $  |   (  |   )  |   |  |------|           |------|   ~  |   -  |   <  |   >  |   :  |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |   %  |   @  |   {  |   }  |   !  |      |           |      |      |   1  |   2  |   3  |   =  |  CAPS  |
+     * |        |   %  |   @  |   {  |   }  |   !  |      |           |      |      |   +  |   ,  |   .  |   `  |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      |      |      |   ~  |  `   |                                       | XXX  |      |   0  |      | XXX  |
+     *   |      |      |      |   ~  |  `   |                                       | XXX  |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |      |       |      |      |
@@ -232,7 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYMB] = LAYOUT_ergodox(
         // left hand 7/7/6/7/5
         // ____  _______  _______  _______  _______  _______  _______
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_NO,   KC_HASH, KC_CIRC, KC_LBRC, KC_RBRC, KC_BSLS, KC_NO,
         KC_NO,   KC_AMPR, KC_DLR,  KC_LPRN, KC_RPRN, KC_PIPE,
         KC_NO,   KC_PERC, KC_AT,   KC_LCBR, KC_RCBR, KC_EXLM, KC_NO,
@@ -241,6 +241,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_NO,
                           KC_NO,
         KC_MINS, KC_UNDS, KC_NO,
+
+        // right hand 7/7/6/7/5
+        // ____  _______  _______  _______  _______  _______  _______
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_PSLS, KC_EXLM, KC_UNDS, KC_EQUAL,KC_PAST, KC_NO,
+                 KC_TILD, KC_MINS, KC_LT,   KC_GT,   KC_COLN, KC_NO,
+        KC_NO,   KC_NO,   KC_PLUS, KC_COMM, KC_DOT,  KC_GRAVE,KC_NO,
+                          KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+
+        // right thumb
+        KC_NO,   KC_NO,
+                          KC_NO,
+        KC_NO,   KC_PENT, KC_PDOT
+    ),
+
+
+    /* Numpad layer
+     *
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * | ESC    |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * |        |   /  |   7  |   8  |   9  |   *  |      |           |      |   /  |   7  |   8  |   9  |   *  |  F12   |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |    ,   |   -  |   4  |   5  |   6  |   +  |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |   0  |   1  |   2  |   3  |   =  |      |           |      |   0  |   1  |   2  |   3  |   =  |  CAPS  |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   |      |      |      |      |      |                                       |      |      |      |      | XXX  |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        |      |      |       |      |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |      |      |------|       |------| Enter| XXX  |
+     *                                 |      |      |      |       |      |      |      |
+     *                                 `--------------------'       `--------------------'
+     */
+    [NUMP] = LAYOUT_ergodox(
+        // left hand 7/7/6/7/5
+        // ____  _______  _______  _______  _______  _______  _______
+        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NO,
+        KC_NO,   KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_NO,
+        KC_COMM, KC_PMNS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
+        KC_NO,   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        // left thumb
+        KC_NO,   KC_NO,
+                          KC_NO,
+        KC_NO,   KC_NO,   KC_NO,
 
         // right hand 7/7/6/7/5
         // ____  _______  _______  _______  _______  _______  _______
@@ -253,7 +302,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right thumb
         KC_NO,   KC_NO,
                           KC_NO,
-        KC_NO,   KC_PENT, KC_PDOT
+        KC_NO,   KC_PENT, KC_NO
     ),
 
     /* Media layer
@@ -421,12 +470,17 @@ void matrix_scan_user(void) {
         SEQ_THREE_KEYS(KC_G, KC_C, KC_A) { SEND_STRING("git commit --amend"); }
 
 
+        // projects
         SEQ_TWO_KEYS(KC_S, KC_S) { SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop/\n"); }
         SEQ_TWO_KEYS(KC_S, KC_L) { SEND_STRING("cd /home/onjin/Workspace/p/cint/src/points2shop/\nssh lxc.p2ssolo\n"); }
         SEQ_TWO_KEYS(KC_N, KC_N) { SEND_STRING("cd /home/onjin/Workspace/p/hint/szpital/niezgodnosci\n"); }
 
+        // fzf
         SEQ_ONE_KEY(KC_F) { SEND_STRING("$(fzf)"); }
+
+        // qmk
         SEQ_ONE_KEY(KC_Q) { SEND_STRING("qmk compile && qmk flash\n"); }
+
     }
 
     uint8_t layer = biton32(layer_state);
@@ -455,6 +509,10 @@ void matrix_scan_user(void) {
             ergodox_right_led_3_on();
             break;
         case SYMB:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            break;
+        case NUMP:
             ergodox_right_led_1_on();
             ergodox_right_led_3_on();
             break;
