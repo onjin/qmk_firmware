@@ -540,6 +540,22 @@ cedit:
 .PHONY: mine
 mine:
 	make ergodox_ez:mine
+layout-images:
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*0'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_0_base.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_0_base.txt -qo ed_layout_0_base.png
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*1'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_1_cole.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_1_cole.txt -qo ed_layout_1_cole.png
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*2'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_2_work.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_2_work.txt -qo ed_layout_2_work.png
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*3'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_3_game.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_3_game.txt -qo ed_layout_3_game.png
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*4'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_4_symb.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_4_symb.txt -qo ed_layout_4_symb.png
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*5'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_5_nump.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_5_nump.txt -qo ed_layout_5_nump.png
+	cat keyboards/ergodox_ez/keymaps/mine/keymap.c |grep '\*\*\*6'|sed -e 's/\*\*[0-9]\*//' > /tmp/ed_layout_6_medi.txt
+	pango-view --font Fira\ Code\ 12 --background=#1c1c1c --foreground=#5f875f --width 1920  --height 1080 /tmp/ed_layout_6_medi.txt -qo ed_layout_6_medi.png
+
 miryoku:
 	make ergodox_ez:manna-harbour_miryoku:flash MIRYOKU_ALPHAS=QWERTY
 
