@@ -1,4 +1,10 @@
-# Quantum Mechanical Keyboard Firmware
+# Quantum Mechanical Keyboard Firmware [onjin's fork]
+
+## Mine utilities
+ * `make mine` - direct edit mine `keyboard.c` with default `$EDITOR`
+ * `make layout-images` - generate background images for all layers from docstrings, f.i. `ed_layout_4_symb.png`
+
+![symbols layout](https://user-images.githubusercontent.com/44516/97232697-ed37cb00-17dd-11eb-8077-0d065590155c.png)
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
 [![Build Status](https://travis-ci.org/qmk/qmk_firmware.svg?branch=master)](https://travis-ci.org/qmk/qmk_firmware)
