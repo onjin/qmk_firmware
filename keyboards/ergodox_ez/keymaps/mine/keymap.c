@@ -2,7 +2,7 @@
 #include "version.h"
 
 // Define layer names
-enum layers { BASE, GAME, COLE, WORK, SYMB, NUMP, MEDI, MIRR};
+enum layers { BASE, GAME, COLE, WORK, SYMB, NUMP, MEDI};
 
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
      * | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RSft   |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Ctrl | MIRR | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | MIRR | SYMB |
+     *   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | Swap | SYMB |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |  Ins |       |  Del | Lock |
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    KC_HYPR,
         KC_GRV,  LT(MEDI, KC_A),   LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,
         KC_LSFT, KC_Z,             ALGR_T(KC_X),    KC_C,    KC_V,    KC_B,    KC_MEH,
-        KC_LCTL, MO(MIRR),         KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
+        KC_LCTL, SH_MON,           KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
 
         KC_NO,   KC_INSERT,
                                    KC_HOME,
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,
                  KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LT(MEDI, KC_SCOLON), KC_QUOTE,
         TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH, KC_RSHIFT,
-                          MO(SYMB),         KC_RGUI,        KC_LEAD,        MO(MIRR), MO(NUMP),
+                          MO(SYMB),         KC_RGUI,        KC_LEAD,        SH_MON,   MO(NUMP),
 
         // right thumb
         KC_DEL, KC_LOCK,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
      * | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |   /  | RSft   |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Ctrl | MIRR | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | MIRR | SYMB |
+     *   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | Swap | SYMB |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |  Ins |       |  Del | Lock |
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|      |           | BASE |------+------+------+------+------+--------|
      * | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |   /  | RSft   |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Ctrl | MIRR | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | MIRR | SYMB |
+     *   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | Swap | SYMB |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |  Ins |       |  Del | Lock |
@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
      * | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RSft   |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Ctrl | MIRR | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | MIRR | SYMB |
+     *   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | Swap | SYMB |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |  Ins |       |  Del | Lock |
@@ -352,19 +352,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_MSTP, KC_MPLY
     ),
 
-    // Qwerty mirror - should be migrated to native qmk mirror feature to support all layers
-    [MIRR] = LAYOUT_ergodox(
-        // left hand
-        KC_EQUAL, KC_MINUS, KC_0, KC_9, KC_8, KC_7, KC_TRANSPARENT, KC_BSLASH, KC_P, KC_O, KC_I, KC_U, KC_Y, KC_TRANSPARENT, KC_QUOTE, KC_SCOLON, KC_L, KC_K, KC_J, KC_H, KC_LSHIFT, KC_SLASH, KC_DOT, KC_COMMA, KC_M, KC_N, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        // left thumb
-        KC_LOCK, KC_DELETE, KC_PGUP, KC_SPACE, KC_ENTER, KC_PGDOWN,
-
-        // right hand
-        KC_6, KC_5, KC_4, KC_3, KC_2, KC_1, KC_ESCAPE, KC_TRANSPARENT, KC_T, KC_R, KC_E, KC_W, KC_Q, KC_TAB, KC_G, KC_F, KC_D, KC_S, KC_A, KC_GRAVE, KC_TRANSPARENT, KC_B, KC_V, KC_C, KC_X, KC_Z, KC_LSHIFT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        // right thumb
-        KC_INSERT, KC_ESCAPE, KC_HOME, KC_END, KC_BSPACE, KC_SPACE),
-
-
 };
 enum next_key_down_up {
     NK_DOWN_UP,
@@ -501,10 +488,6 @@ void matrix_scan_user(void) {
             ergodox_right_led_3_on();
             break;
         case MEDI:
-            ergodox_right_led_1_on();
-            ergodox_right_led_3_on();
-            break;
-        case MIRR:
             ergodox_right_led_1_on();
             ergodox_right_led_3_on();
             break;
