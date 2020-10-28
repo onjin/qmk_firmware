@@ -42,8 +42,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    _______,
         KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    KC_HYPR,
         KC_GRV,  LT(MEDI, KC_A),   LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,
-        KC_LSFT, KC_Z,             ALGR_T(KC_X),    KC_C,    KC_V,    KC_B,    KC_MEH,
-        KC_LCTL, SH_MON,           KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
+        KC_NO,   KC_Z,             ALGR_T(KC_X),    KC_C,    KC_V,    KC_B,    KC_MEH,
+        KC_NO,   SH_MON,           KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
 
         KC_NO,   KC_INSERT,
                                    KC_HOME,
@@ -54,8 +54,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(GAME),KC_6,    KC_7,    KC_8,    KC_9,           KC_0,           KC_EQUAL,
         TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,
                  KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LT(MEDI, KC_SCOLON), KC_QUOTE,
-        TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH, KC_RSHIFT,
-                          MO(SYMB),         KC_RGUI,        KC_LEAD,        SH_MON,   MO(NUMP),
+        TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH, KC_NO,
+                          MO(SYMB),         KC_RGUI,        KC_LEAD,        SH_MON,   KC_NO,
 
         // right thumb
         KC_DEL, KC_LOCK,
@@ -186,8 +186,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,          _______, _______, _______, _______, _______,
         _______, _______,          _______, _______, _______, _______, _______,
         _______, KC_A,             KC_S,    KC_D,    KC_F,    _______,
-        _______, _______,          KC_X,    _______, _______, _______, _______,
-        _______, _______,          _______, _______, _______,
+        KC_LSFT, _______,          KC_X,    _______, _______, _______, _______,
+        KC_LCTL, _______,          _______, _______, _______,
 
         KC_NO,   KC_INSERT,
                                    KC_HOME,
@@ -198,8 +198,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(BASE),_______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,
                  _______, KC_J,    KC_K,    KC_L,    _______, _______,
-        _______, _______, _______, _______, KC_DOT,  _______, _______,
-                          _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, KC_DOT,  _______, KC_RSFT,
+                          _______, _______, _______, _______, KC_RCTL,
 
         // right thumb
         KC_DEL, KC_LOCK,
@@ -464,14 +464,16 @@ void matrix_scan_user(void) {
 
     }
 
-    uint8_t layer = biton32(layer_state);
 
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
-
-    switch (layer) {
+    led_t led_state = host_keyboard_led_state();
+    if (led_state.caps_lock) {
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
+        ergodox_right_led_3_on();
+    }
+};
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
         case COLE:
             ergodox_right_led_1_on();
             break;
@@ -494,15 +496,12 @@ void matrix_scan_user(void) {
             ergodox_right_led_3_on();
             break;
         default:
-            break;
+            ergodox_board_led_off();
+            ergodox_right_led_1_off();
+            ergodox_right_led_2_off();
+            ergodox_right_led_3_off();
             break;
     }
-
-    led_t led_state = host_keyboard_led_state();
-    if (led_state.caps_lock) {
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-    }
-};
+  return state;
+}
 
