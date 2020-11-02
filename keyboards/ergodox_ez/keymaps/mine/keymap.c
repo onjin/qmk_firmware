@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***0* |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
      ***0* | LSft   |   Z  |AltG/X|   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |AltG/.|   /  | RSft   |
      ***0* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     ***0*   | Ctrl | Swap | Lead | LGui | Alt/E|                                       |SMB/Ta| RGui | Lead | Swap | NUMP |
+     ***0*   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | SYMB | RGui | Lead | Swap | NUMP |
      ***0*   `----------------------------------'                                       `----------------------------------'
      ***0*                                        ,-------------.       ,-------------.
      ***0*                                        |      |  Ins |       |  Del | Lock |
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,
                  KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LT(MEDI, KC_SCOLON), KC_QUOTE,
         TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH, KC_NO,
-                          LT(SYMB, KC_TAB), KC_RGUI,        KC_LEAD,        SH_MON,   KC_NO,
+                          MO(SYMB),         KC_RGUI,        KC_LEAD,        SH_MON,   KC_NO,
 
         // right thumb
         KC_DEL, KC_LOCK,
