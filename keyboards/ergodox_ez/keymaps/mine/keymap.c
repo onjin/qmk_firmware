@@ -473,6 +473,11 @@ void matrix_scan_user(void) {
     }
 };
 layer_state_t layer_state_set_user(layer_state_t state) {
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+
     switch (get_highest_layer(state)) {
         case COLE:
             ergodox_right_led_1_on();
@@ -492,7 +497,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             ergodox_right_led_2_on();
             break;
         case NUMP:
-            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
             ergodox_right_led_3_on();
             break;
         default:
