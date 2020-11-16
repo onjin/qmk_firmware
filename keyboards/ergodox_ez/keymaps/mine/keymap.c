@@ -6,9 +6,8 @@ enum layers { BASE, GAME, COLE, WORK, SYMB, NUMP, MEDI};
 
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
-    EPRM,
+    SHIFT_INS,
     VRSN,
-    RGB_SLD,
 
 };
 
@@ -31,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***0*                                        ,-------------.       ,-------------.
      ***0*                                        |      |  Ins |       |  Del | Lock |
      ***0*                                 ,------|------|------|       |------+------+------.
-     ***0*                                 |      |      | Home |       | PgUp |      |NUMP/ |
+     ***0*                                 |Shift/|      | Home |       | PgUp |      |NUMP/ |
      ***0*                                 | Space| BkSp |------|       |------| Enter|Space |
      ***0*                                 |      |      |  End |       | PgDn |      |      |
      ***0*                                 `--------------------'       `--------------------'
@@ -47,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         KC_NO,   KC_INSERT,
                                    KC_HOME,
-        KC_SPC, KC_BSPC, KC_END,
+        LSFT_T(KC_SPC), KC_BSPC, KC_END,
 
         // right hand
         // ____  _______  _______  _______  _______         _______         _______
@@ -266,16 +265,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***5* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      ***5* |    ,   |   -  |   4  |   5  |   6  |   +  |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
      ***5* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     ***5* |        |   0  |   1  |   2  |   3  |   =  |      |           |      |   0  |   1  |   2  |   3  |   =  |  CAPS  |
+     ***5* |        |   0  |   1  |   2  |   3  |   =  |      |           |      |   0  |   1  |   2  |   3  |   =  |        |
      ***5* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      ***5*   |      |      |      |      |      |                                       |      |      |      |      | XXX  |
      ***5*   `----------------------------------'                                       `----------------------------------'
      ***5*                                        ,-------------.       ,-------------.
      ***5*                                        |      |      |       |      |      |
      ***5*                                 ,------|------|------|       |------+------+------.
-     ***5*                                 |      |      |      |       |      |      |      |
-     ***5*                                 |      |      |------|       |------| Enter| XXX  |
-     ***5*                                 |      |      |      |       |      |      |      |
+     ***5*                                 | Shift|      |      |       |      |      |      |
+     ***5*                                 |  +   | CAPS |------|       |------| Enter| XXX  |
+     ***5*                                 | INS  |      | VRSN |       |      |      |      |
      ***5*                                 `--------------------'       `--------------------'
      ***5*/
     [NUMP] = LAYOUT_ergodox(
@@ -289,14 +288,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left thumb
         KC_NO,   KC_NO,
                           KC_NO,
-        KC_NO,   KC_NO,   KC_NO,
+        SHIFT_INS, KC_CAPS,   VRSN,
 
         // right hand 7/7/6/7/5
         // ____  _______  _______  _______  _______  _______  _______
         KC_NO,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         KC_NO,   KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_F12,
                  KC_PMNS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_NO,
-        KC_NO,   KC_NO,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_CAPS,
+        KC_NO,   KC_NO,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_NO,
                           KC_NO,   KC_NO,   KC_P0,   KC_NO,   KC_NO,
 
         // right thumb
@@ -312,7 +311,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***6* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      ***6* | Reset  |      |Whl/L |Whl/D |Whl/U |Whl/R |      |           |      |Home  |PageDn|PageUp| End  | Ins  |        |
      ***6* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     ***6* |        |      |Mou/L |Mou/D |Mou/U |Mou/R |------|           |------| Left | Down | Up   | Right| XXX  |        |
+     ***6* |        | XXX  |Mou/L |Mou/D |Mou/U |Mou/R |------|           |------| Left | Down | Up   | Right| XXX  |        |
      ***6* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      ***6* |        |      |MAcl0 |MAcl1 | MAcl2|      |      |           |      |MePrev|VolDwn|VolUp |MeNext|      |        |
      ***6* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -407,27 +406,22 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        // dynamically generate these.
-        case EPRM:
+        // shift+insert under single key / vim :)
+        case SHIFT_INS:
             if (record->event.pressed) {
-                eeconfig_init();
+                register_code(KC_LSHIFT);
+                tap_code(KC_INS);
+                unregister_code(KC_LSHIFT);
             }
             return false;
             break;
+        // print versions
         case VRSN:
             if (record->event.pressed) {
                 SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
             }
             return false;
             break;
-        #ifdef RGBLIGHT_ENABLE
-        case RGB_SLD:
-            if (record->event.pressed) {
-                rgblight_mode(1);
-            }
-            return false;
-            break;
-        # endif
     }
     return true;
 }
