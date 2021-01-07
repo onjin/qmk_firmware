@@ -6,7 +6,7 @@ enum layers { BASE, GAME, COLE, WORK, SYMB, NUMP, MEDI};
 
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
-    SHIFT_INS,
+    SHFT_INS,
     VRSN,
 
 };
@@ -23,9 +23,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***0* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      ***0* |   `    |MEDI/A|Alt/S |Ctr/D |Shf/F |   G  |------|           |------|   H  |Shf/J |Ctr/K |Alt/L |MEDI/;|   '    |
      ***0* |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
-     ***0* | LSft   |   Z  |AltG/X|   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |AltG/.|   /  | RSft   |
+     ***0* | LSft   |   Z  |AltG/X|   C  |Hypr/V|Meh/B |      |           |      |   N  |   M  |   ,  |AltG/.|   /  | RSft   |
      ***0* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     ***0*   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | SYMB | RGui | Lead | Swap | NUMP |
+     ***0*   | Ctrl | Swap | Lead | LGui |Alt/Es|                                       | SYMB | RGui | Lead | Swap | NUMP |
      ***0*   `----------------------------------'                                       `----------------------------------'
      ***0*                                        ,-------------.       ,-------------.
      ***0*                                        |      |  Ins |       |  Del | Lock |
@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    _______,
         KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    KC_HYPR,
         KC_GRV,  LT(MEDI, KC_A),   LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,
-        KC_NO,   KC_Z,             ALGR_T(KC_X),    KC_C,    KC_V,    KC_B,    KC_MEH,
+        KC_NO,   KC_Z,             ALGR_T(KC_X),    KC_C,    HYPR_T(KC_V),    MEH_T(KC_B),    KC_MEH,
         KC_NO,   SH_MON,           KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
 
         KC_NO,   KC_INSERT,
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______,          _______, _______, _______, _______, _______,
         _______, _______,          _______, _______, _______, _______, _______,
         _______, KC_A,             KC_S,    KC_D,    KC_F,    _______,
-        KC_LSFT, _______,          KC_X,    _______, _______, _______, _______,
+        KC_LSFT, _______,          KC_X,    _______, KC_V,    KC_B,    _______,
         KC_LCTL, _______,          _______, _______, _______,
 
         KC_NO,   KC_INSERT,
@@ -261,34 +261,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***5* ,--------------------------------------------------.           ,--------------------------------------------------.
      ***5* | ESC    |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
      ***5* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     ***5* |        |   /  |   7  |   8  |   9  |   *  |      |           |      |   /  |   7  |   8  |   9  |   *  |  F12   |
+     ***5* |Shift+In|   /  |   7  |   8  |   9  |   *  |      |           |      |   /  |   7  |   8  |   9  |   *  |  F12   |
      ***5* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      ***5* |    ,   |   -  |   4  |   5  |   6  |   +  |------|           |------|   -  |   4  |   5  |   6  |   +  |        |
      ***5* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     ***5* |        |   0  |   1  |   2  |   3  |   =  |      |           |      |   0  |   1  |   2  |   3  |   =  |        |
+     ***5* | CAPS   |   0  |   1  |   2  |   3  |   =  |      |           |      |   0  |   1  |   2  |   3  |   =  |        |
      ***5* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      ***5*   |      |      |      |      |      |                                       |      |      |      |      | XXX  |
      ***5*   `----------------------------------'                                       `----------------------------------'
      ***5*                                        ,-------------.       ,-------------.
      ***5*                                        |      |      |       |      |      |
      ***5*                                 ,------|------|------|       |------+------+------.
-     ***5*                                 | Shift|      |      |       |      |      |      |
-     ***5*                                 |  +   | CAPS |------|       |------| Enter| XXX  |
-     ***5*                                 | INS  |      | VRSN |       |      |      |      |
+     ***5*                                 |      |      |      |       |      |      |      |
+     ***5*                                 |      |      |------|       |------| Enter| XXX  |
+     ***5*                                 |      |      |Enter |       |      |      |      |
      ***5*                                 `--------------------'       `--------------------'
      ***5*/
     [NUMP] = LAYOUT_ergodox(
         // left hand 7/7/6/7/5
         // ____  _______  _______  _______  _______  _______  _______
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NO,
-        KC_NO,   KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_NO,
+        SHFT_INS,KC_PSLS, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_NO,
         KC_COMM, KC_PMNS, KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-        KC_NO,   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_NO,
+        KC_CAPS, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PEQL, KC_NO,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         // left thumb
         KC_NO,   KC_NO,
-                          KC_NO,
-        SHIFT_INS, KC_CAPS,   VRSN,
+                          VRSN,
+        _______, _______, KC_ENT,
 
         // right hand 7/7/6/7/5
         // ____  _______  _______  _______  _______  _______  _______
@@ -407,7 +407,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         // shift+insert under single key / vim :)
-        case SHIFT_INS:
+        case SHFT_INS:
             if (record->event.pressed) {
                 register_code(KC_LSHIFT);
                 tap_code(KC_INS);

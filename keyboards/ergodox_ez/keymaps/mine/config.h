@@ -28,6 +28,7 @@
 
 
 // default but important
+#undef TAPPING_TERM
 #define TAPPING_TERM 200
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
