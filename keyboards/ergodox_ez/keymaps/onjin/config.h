@@ -1,20 +1,14 @@
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
-
+/*
+  Set any config.h overrides for your specific keymap here.
+  See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
+*/
+#pragma once
 #define LEADER_TIMEOUT 800 // leader key sequence timeout in millis
 #define ORYX_CONFIGURATOR
-
-#endif
 
 #undef  DEBOUNCE
 #define DEBOUNCE 25
 
-// macros
-#define M_VERSION M(0)
-
-#define KC_NP KC_NO // key is not present
-#define KC_NA KC_NO // present but not available for use
-#define KC_NU KC_NO // available but not used
 
 // non-KC_ keycodes
 #define KC_RST RESET
@@ -74,3 +68,21 @@
     { ___, R02, R06, R08, ___, ___ },     \
     { ___, ___, ___, ___, ___, ___ }    \
     }
+
+
+#define LAYOUT_mini(\
+     K00, K01, K02, K03, K04,                K05, K06, K07, K08, K09,\
+     K10, K11, K12, K13, K14,                K15, K16, K17, K18, K19,\
+     K20, K21, K22, K23, K24,                K25, K26, K27, K28, K29,\
+     N30, N31, K32, K33, K34,                K35, K36, K37, N38, N39\
+)\
+LAYOUT_ergodox_pretty(\
+___, ___, ___, ___, ___, ___, ___,      ___, ___, ___, ___, ___, ___, ___,\
+___, K00, K01, K02, K03, K04, ___,      ___, K05, K06, K07, K08, K09, ___,\
+___, K10, K11, K12, K13, K14,                K15, K16, K17, K18, K19, ___,\
+___, K20, K21, K22, K23, K24, ___,      ___, K25, K26, K27, K28, K29, ___,\
+___, ___, ___, ___, K32,                          K37, ___, ___, ___, ___,\
+                         ___, ___,      ___, ___,\
+                              ___,      ___,\
+                    K33, K34, ___,      ___, K35, K36\
+)
