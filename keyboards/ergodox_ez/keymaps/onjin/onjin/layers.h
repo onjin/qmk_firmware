@@ -1,0 +1,34 @@
+#include "available_layers.h"
+
+#if !defined(ONJIN_LAYER_BASE)
+    #define ONJIN_LAYER_BASE ONJIN_ALTERNATIVES_BASE36_QWERTY
+#endif
+
+#if !defined(ONJIN_LAYER_NAV)
+    #define ONJIN_LAYER_NAV ONJIN_ALTERNATIVES_NAV_VI
+#endif
+
+#if !defined(ONJIN_LAYER_MOUSE)
+    #define ONJIN_LAYER_MOUSE ONJIN_ALTERNATIVES_MOUSE_VI
+#endif
+
+#if !defined(ONJIN_LAYER_MEDIA)
+    #define ONJIN_LAYER_MEDIA ONJIN_ALTERNATIVES_MEDIA_VI
+#endif
+
+#if !defined(ONJIN_LAYER_NUM)
+    #define ONJIN_LAYER_NUM ONJIN_ALTERNATIVES_NUM
+#endif
+
+#if !defined(ONJIN_LAYER_SYM)
+    #define ONJIN_LAYER_SYM ONJIN_ALTERNATIVES_SYM
+#endif
+
+#if !defined(ONJIN_LAYER_FUN)
+    #define ONJIN_LAYER_FUN ONJIN_ALTERNATIVES_FUN
+#endif
+
+#if !defined(ONJIN_LAYER_BUTTON)
+    #define ONJIN_LAYER_BUTTON ONJIN_ALTERNATIVES_BUTTON
+#endif
+
