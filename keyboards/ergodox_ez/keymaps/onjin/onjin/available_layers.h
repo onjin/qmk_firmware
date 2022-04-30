@@ -143,13 +143,13 @@
     _______, _______,          _______, _______, _______, _______, _______,\
     _______, KC_A,             KC_S,    KC_D,    KC_F,    _______,\
     KC_LSFT, _______,          KC_X,    _______, KC_V,    KC_B,    _______,\
-    KC_LCTL, _______,          _______, _______, _______,\
+    KC_LCTL, _______,          _______, _______, KC_LALT,\
     KC_NO,   KC_INSERT,\
                                KC_HOME,\
     KC_SPC, KC_BSPC, KC_END,\
     TO(BASE),_______, _______, _______, _______, _______, _______,\
     _______, _______, _______, _______, _______, _______, _______,\
-             _______, KC_J,    KC_K,    KC_L,    _______, _______,\
+             _______, KC_J,    KC_K,    KC_L,    LT(MEDI, KC_COLN), _______,\
     _______, _______, _______, _______, KC_DOT,  _______, KC_RSFT,\
                       _______, _______, _______, _______, KC_RCTL,\
     KC_DEL, KC_LOCK,\
@@ -316,7 +316,7 @@ U_NA,              KC_ALGR,           U_NA,              U_NA,              U_NA
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_BTN1,           KC_BTN3,           KC_BTN2,           U_NP,              U_NP
 
 #define ONJIN_ALTERNATIVES_MEDIA_VI \
-RESET,             U_NA,              U_NA,              U_NA,              U_NA,              RGB_TOG,           RGB_MOD,           RGB_HUI,           RGB_SAI,           RGB_VAI,           \
+U_NA,             U_NA,              U_NA,              U_NA,              U_NA,              RGB_TOG,           RGB_MOD,           RGB_HUI,           RGB_SAI,           RGB_VAI,           \
 KC_LGUI,           KC_LALT,           KC_LCTL,           KC_LSFT,           U_NA,              KC_MPRV,           KC_VOLD,           KC_VOLU,           KC_MNXT,           OUT_AUTO,          \
 U_NA,              KC_ALGR,           U_NA,              U_NA,              U_NA,              U_NU,              U_NU,              U_NU,              U_NU,              U_NU,              \
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              KC_MSTP,           KC_MPLY,           KC_MUTE,           U_NP,              U_NP
