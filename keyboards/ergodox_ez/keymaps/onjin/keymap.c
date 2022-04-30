@@ -515,28 +515,6 @@ void send_keystrokes(uint8_t key, ...) {
     va_end(vl);
 }
 
-// leaving this in place for compatibilty with old keymaps cloned and re-compiled.
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-    switch (id) {
-        case 0:
-            if (record->event.pressed) {
-                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            }
-            break;
-        case 71:
-            if (record->event.pressed) {
-                SEND_STRING("import pdb; pdb.set_trace()");
-            }
-            break;
-        case 72:
-            if (record->event.pressed) {
-                SEND_STRING("import ipdb; ipdb.set_trace()");
-            }
-            break;
-    }
-    return MACRO_NONE;
-};
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         // shift+insert under single key / vim :)
