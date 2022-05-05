@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      ***0* |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
      ***0* | Lead   |   Z  |AltG/X|   C  |Hypr/V|Meh/B |      |           |      |   N  |   M  |   ,  |AltG/.|   /  | Lead   |
      ***0* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     ***0*   | Swap | Swap | Lead | LGui |Alt/Es|                                       | SYMB | RGui | Lead | Swap | Swap |
+     ***0*   | Swap | Swap | Lead | LGui |Alt/Es|                                       | SY/Ta| RGui | Lead | Swap | Swap |
      ***0*   `----------------------------------'                                       `----------------------------------'
      ***0*                                        ,-------------.       ,-------------.
      ***0*                                        |      |  Ins |       |  Del | Lock |
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // ____  _______           _______  _______  _______  _______  _______
         KC_ESC,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    _______,
         KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    TO(TA1),
-        KC_GRV,  LT(MEDI, KC_A),   LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,
+        KC_GRV,  LGUI_T(KC_A),   LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,
         KC_LEAD, KC_Z,             ALGR_T(KC_X),    KC_C,    HYPR_T(KC_V),    MEH_T(KC_B),    KC_MEH,
         SH_MON,  SH_MON,           KC_LEAD, KC_LGUI, LALT_T(KC_ESC),
 
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,
                  KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LT(MEDI, KC_SCOLON), KC_QUOTE,
         TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH, KC_LEAD,
-                          MO(SYMB),         KC_RGUI,        KC_LEAD,        SH_MON,   SH_MON,
+                          LT(SYMB, KC_TAB),         KC_RGUI,        KC_LEAD,        SH_MON,   SH_MON,
 
         // right thumb
         KC_DEL, KC_LOCK,
