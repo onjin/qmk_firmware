@@ -34,7 +34,7 @@
     TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,\
                 KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LGUI_T(KC_SCOLON), KC_QUOTE,\
     TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), LT(BUTTON, KC_SLASH), KC_LEAD,\
-                        LT(SYMB, KC_TAB),         MO(NUMP),        KC_LEAD,        SH_MON,   SH_MON,\
+                        LT(SYMB, KC_TAB),         LT(NUMP, KC_TAB),        KC_LEAD,        SH_MON,   SH_MON,\
     KC_DEL, KC_LOCK,\
     KC_PGUP,\
     KC_PGDOWN, LT(SYM,KC_ENT), LT(NUM, KC_SPC)
@@ -143,7 +143,7 @@
     _______, _______,          _______, _______, _______, _______, _______,\
     _______, KC_A,             KC_S,    KC_D,    KC_F,    _______,\
     KC_LSFT, _______,          KC_X,    _______, KC_V,    KC_B,    _______,\
-    KC_LCTL, _______,          _______, _______, KC_LALT,\
+    KC_LCTL, _______,          _______, KC_LGUI, KC_LALT,\
     KC_NO,   KC_INSERT,\
                                KC_HOME,\
     KC_SPC, KC_BSPC, KC_END,\
