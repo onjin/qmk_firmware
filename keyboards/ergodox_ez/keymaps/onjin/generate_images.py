@@ -33,7 +33,7 @@ for nr, name in LAYOUTS.items():
     filename = f"ed_layout_{nr}_{name}"
     txt_filename = filename + ".txt"
     img_filename = filename + ".png"
-    PARSE_DOC = fr"cat keymap.c |grep '\*\*\*{nr}'|sed -e 's/\*\*[0-9]\*//' > /tmp/{txt_filename}"
+    PARSE_DOC = fr"cat onjin/available_layers.h |grep '\*\*\*{nr}'|sed -e 's/\*\*[0-9]\*//' > /tmp/{txt_filename}"
     GENERATE_IMG = fr"""pango-view --margin "{MARGIN}" --font {FONT} --background={BACKGROUND} --foreground={FOREGROUND} --width {WIDTH} --height {HEIGHT} /tmp/{txt_filename} -qo {img_filename}"""
 
     print(f"Generating {txt_filename}")
