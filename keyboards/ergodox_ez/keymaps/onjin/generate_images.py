@@ -3,7 +3,23 @@ from typing import Dict
 import os
 
 
-LAYOUTS: Dict[int, str] = {0: "base", 1: "cole", 2: "work", 3: "game", 4: "symb", 5: "nump", 6: "medi"}
+LAYOUTS: Dict[int, str] = {
+    0: "base",
+    1: "cole",
+    2: "work",
+    3: "game",
+    4: "symb",
+    5: "nump",
+    6: "medi",
+    7: "36-base",
+    8: "36-navi",
+    9: "36-mouse",
+    10: "36-media",
+    11: "36-numeric",
+    12: "36-symbols",
+    13: "36-functions",
+    14: "36-buttons",
+}
 
 MARGIN: str = "400px 0px 0px 0px"
 FONT: str = r"Fira\ Code\ 22"
