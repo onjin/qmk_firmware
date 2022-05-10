@@ -143,7 +143,7 @@
     _______, _______,          _______, _______, _______, _______, _______,\
     _______, KC_A,             KC_S,    KC_D,    KC_F,    _______,\
     KC_LSFT, _______,          KC_X,    _______, KC_V,    KC_B,    _______,\
-    KC_LCTL, _______,          _______, MO(MEDIA), KC_LALT,\
+    KC_LCTL, _______,          MO(MEDIA), KC_LGUI, KC_LALT,\
     KC_NO,   KC_INSERT,\
                                KC_HOME,\
     KC_SPC, KC_BSPC, KC_END,\
