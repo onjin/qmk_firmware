@@ -26,7 +26,7 @@
     KC_TAB,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    _______,\
     KC_GRV,  LGUI_T(KC_A),     LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,\
     KC_LEAD, LT(BUTTON, KC_Z),             ALGR_T(KC_X),    KC_C,    HYPR_T(KC_V),    MEH_T(KC_B),    KC_MEH,\
-    SH_MON,  SH_MON,           KC_LEAD, KC_LGUI,LT(MEDIA, KC_ESC),\
+    SH_MON,  SH_MON,           KC_LEAD, _______,LT(MEDIA, KC_ESC),\
     KC_NO,   KC_INSERT,\
                                 KC_HOME,\
     LT(NAV, KC_SPC), LT(MOUSE, KC_BSPC), KC_END,\
