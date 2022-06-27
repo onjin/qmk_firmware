@@ -34,7 +34,7 @@
     TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLASH,\
                 KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LGUI_T(KC_SCOLON), KC_QUOTE,\
     _______,KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), LT(BUTTON, KC_SLASH), KC_LEAD,\
-                        LT(SYMB, KC_TAB),         LT(FUN,  KC_TAB),        KC_LEAD,        SH_MON,   SH_MON,\
+                        LT(FUN, KC_TAB),         KC_LEAD,        KC_LEAD,        SH_MON,   SH_MON,\
     KC_DEL, KC_LOCK,\
     KC_PGUP,\
     KC_PGDOWN, LT(SYM,KC_ENT), LT(NUM, KC_SPC)
@@ -141,7 +141,7 @@
 #define ONJIN_ALTERNATIVES_GAME \
     KC_ESC, _______,          _______, _______, _______, _______, _______,\
     KC_TAB, _______,          _______, _______, _______, _______, _______,\
-    KC_GRV KC_A,             KC_S,    KC_D,    KC_F,    _______,\
+    KC_GRV, KC_A,             KC_S,    KC_D,    KC_F,    _______,\
     KC_LSFT, _______,          KC_X,    _______, KC_V,    KC_B,    _______,\
     KC_LCTL, _______,          MO(MEDIA), KC_LGUI, KC_LALT,\
     KC_NO,   KC_INSERT,\
@@ -460,7 +460,7 @@ U_NP,              U_NP,              KC_LPRN,           KC_RPRN,           KC_U
 ***13*                                 `--------------------'       `--------------------'
 ***13*/
 #define ONJIN_ALTERNATIVES_FUN \
-KC_F12,            KC_F7,             KC_F8,             KC_F9,             KC_PSCR,           U_NA,              U_NA,              U_NA,              U_NA,              RESET,             \
+KC_F12,            KC_F7,             KC_F8,             KC_F9,             KC_PSCR,           U_NA,              U_NA,              U_NA,              U_NA,              U_NA,             \
 KC_F11,            KC_F4,             KC_F5,             KC_F6,             KC_SLCK,           U_NA,              KC_LSFT,           KC_LCTL,           KC_LALT,           KC_LGUI,           \
 KC_F10,            KC_F1,             KC_F2,             KC_F3,             KC_PAUS,           U_NA,              U_NA,              U_NA,              KC_ALGR,           U_NA,              \
 U_NP,              U_NP,              KC_APP,            KC_SPC,            KC_BSPC,           U_NA,              U_NA,              U_NA,              U_NP,              U_NP
