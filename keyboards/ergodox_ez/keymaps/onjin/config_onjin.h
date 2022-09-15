@@ -8,6 +8,7 @@
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE,  // can always be here
     SHFT_INS,
+    SHRUG,  // ¯\_(ツ)_/¯
     VRSN,
 
 };
