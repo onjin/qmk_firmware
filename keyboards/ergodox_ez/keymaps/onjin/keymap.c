@@ -78,6 +78,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
+        case SHRUG:
+          if (record->event.pressed) {
+            send_unicode_string("¯\\_(ツ)_/¯");
+          }
+          return false;
+          break;
     }
     return true;
 }
@@ -99,6 +105,8 @@ void matrix_scan_user(void) {
 
         // enter at left side
         SEQ_ONE_KEY(KC_BSPC) { tap_code(KC_ENT); }
+
+        SEQ_TWO_KEYS(KC_S, KC_S) { SEND_STRING("git add ."); }
 
         // jk
         SEQ_TWO_KEYS(KC_J, KC_K) { send_keystrokes(KC_ESCAPE, KC_NO); }

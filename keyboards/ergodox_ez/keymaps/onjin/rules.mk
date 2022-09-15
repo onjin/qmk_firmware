@@ -18,3 +18,4 @@ SWAP_HANDS_ENABLE = yes
 # https://github.com/qmk/qmk_firmware/issues/6269
 DEBOUNCE_TYPE = sym_defer_g
 DEBOUNCE = 45
+UNICODE_ENABLE = yes
