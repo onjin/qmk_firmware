@@ -65,9 +65,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // shift+insert under single key / vim :)
         case SHFT_INS:
             if (record->event.pressed) {
-                register_code(KC_LSHIFT);
+                register_code(KC_LSFT);
                 tap_code(KC_INS);
-                unregister_code(KC_LSHIFT);
+                unregister_code(KC_LSFT);
             }
             return false;
             break;
@@ -88,59 +88,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-LEADER_EXTERNS();
 
 
-// Declare a boolean variable to keep track of whether any sequence
-// will have been matched.
-bool did_leader_succeed;
 
 void matrix_init_user(void) {
     // set_unicode_input_mode(UC_LNX);
 }
 
 void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-        did_leader_succeed = leading = false;
-
-        // enter at left side
-        SEQ_ONE_KEY(KC_BSPC) { tap_code(KC_ENT); }
-
-        SEQ_TWO_KEYS(KC_S, KC_S) { SEND_STRING("git add ."); }
-
-        // jk
-        SEQ_TWO_KEYS(KC_J, KC_K) { send_keystrokes(KC_ESCAPE, KC_NO); }
-        SEQ_TWO_KEYS(KC_G, KC_G) { SEND_STRING("git checkout master && git pull && git fetch -p && git branch --merged"); }
-        SEQ_TWO_KEYS(KC_G, KC_A) { SEND_STRING("git add ."); }
-        SEQ_TWO_KEYS(KC_G, KC_D) { SEND_STRING("git diff"); }
-        SEQ_THREE_KEYS(KC_G, KC_D, KC_S) { SEND_STRING("git diff --staged"); }
-        SEQ_TWO_KEYS(KC_G, KC_L) { SEND_STRING("git log"); }
-        SEQ_THREE_KEYS(KC_G, KC_L, KC_O) { SEND_STRING("git log --oneline"); }
-        SEQ_TWO_KEYS(KC_G, KC_F) { SEND_STRING("git fetch"); }
-        SEQ_TWO_KEYS(KC_G, KC_O) { SEND_STRING("git checkout"); }
-        SEQ_TWO_KEYS(KC_G, KC_P) { SEND_STRING("git pull"); }
-        SEQ_TWO_KEYS(KC_G, KC_S) { SEND_STRING("git status"); }
-        SEQ_TWO_KEYS(KC_G, KC_C) {
-            SEND_STRING("git commit -m ''");
-            send_keystrokes(KC_LEFT, KC_NO);
-        }
-        SEQ_THREE_KEYS(KC_G, KC_C, KC_A) { SEND_STRING("git commit --amend"); }
-
-        // fzf
-        SEQ_ONE_KEY(KC_F) { SEND_STRING("$(fzf)"); }
-
-        // qmk
-        SEQ_ONE_KEY(KC_Q) { SEND_STRING("qmk compile && qmk flash\n"); }
-
-
-        // Call leader_end at the end of the function, instead of at
-        // the start. This way, we're sure we have set did_leader_succeed.
-        leader_end();
-
-
-    }
-
-
     led_t led_state = host_keyboard_led_state();
     if (led_state.caps_lock) {
         ergodox_right_led_1_on();
@@ -149,14 +104,24 @@ void matrix_scan_user(void) {
     }
 };
 
+// Declare a boolean variable to keep track of whether any sequence
+// will have been matched.
+bool did_leader_succeed;
 
-void leader_start() {
+void leader_end_user(void) {
 #   ifdef RGBLIGHT_ENABLE
     rgblight_setrgb_range(5, 100, 199, 10, 15);
 #   endif
-};
 
-void leader_end() {
+    did_leader_succeed = false;
+
+    if (leader_sequence_one_key(KC_F)) {
+        // Leader, f => Types the below string
+        SEND_STRING("$(fzf)");
+    } else {
+        did_leader_succeed = false;
+    }
+
 #   ifdef RGBLIGHT_ENABLE
     if (did_leader_succeed) {
         rgblight_setrgb_range(100, 255, 100, 10, 15);
@@ -166,7 +131,7 @@ void leader_end() {
     }
     rgblight_setrgb_range(200, 200, 255, 10, 15);
 #   endif
-};
+}
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -176,29 +141,25 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     ergodox_right_led_3_off();
 
     switch (get_highest_layer(state)) {
-        case MEDIA:
-        case SYM:
-            ergodox_right_led_1_on();
-            break;
-        case NAV:
-        case NUM:
-            ergodox_right_led_2_on();
-            break;
-        case MOUSE:
-        case FUN:
-            ergodox_right_led_3_on();
-            break;
+        // case MEDIA:
+        // case SYM:
+        //     ergodox_right_led_1_on();
+        //     break;
+        // case NAV:
+        // case NUM:
+        //     ergodox_right_led_2_on();
+        //     break;
+        // case MOUSE:
+        // case FUN:
+        //     ergodox_right_led_3_on();
+        //     break;
         case GAME:
             ergodox_right_led_1_on();
-            ergodox_right_led_3_on();
             break;
         case COLE:
-            ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
-        case SYMB:
-            ergodox_right_led_1_on();
-            ergodox_right_led_2_on();
+        case WORK:
             ergodox_right_led_3_on();
             break;
         default:

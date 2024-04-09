@@ -11,7 +11,7 @@ COMMAND_ENABLE = yes
 
 ORYX_CONFIGURATOR = yes
 
-RGBLIGHT_ENABLE = yes
+#RGBLIGHT_ENABLE = yes
 SWAP_HANDS_ENABLE = yes
 
 # prevent double presses problem
