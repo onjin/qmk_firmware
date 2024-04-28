@@ -9,6 +9,8 @@
 #undef  DEBOUNCE
 #define DEBOUNCE 25
 
+#define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
+
 
 // non-KC_ keycodes
 #define KC_TOG RGB_TOG
