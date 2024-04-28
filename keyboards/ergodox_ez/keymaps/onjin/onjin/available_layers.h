@@ -6,12 +6,12 @@
  ***01* |        |   1  |   2  |   3  |   4  |   5  |      |           | GAME |   6  |   7  |   8  |   9  |   0  |   =    |
  ***01* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  ***01* |        |   Q  |   W  |   E  |   R  |   T  |      |           | COLE |   Y  |   U  |   I  |   O  |   P  |   \    |
- ***01* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ ***01* |--------+------+------+------+------+------| VRSN |           |      |------+------+------+------+------+--------|
  ***01* |        |GUI/A |Alt/S |Ctr/D |Shf/F |   G  |------|           |------|   H  |Shf/J |Ctr/K |Alt/L |GUI/; |   '    |
  ***01* |--------+------+------+------+------+------|      |           | WORK |------+------+------+------+------+--------|
  ***01* | Lead   |   Z  |AltG/X|   C  |Hypr/V|Meh/B | SHRUG|           |      |   N  |   M  |   ,  |AltG/.|   /  | Lead   |
  ***01* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- ***01*   | Swap | Swap | Lead |      |MED/Es|                                       |SYM/Ta| FUN  | Lead | Swap | Swap |
+ ***01*   | Swap | Lead |      |      |MED/Es|                                       |SYM/Ta| FUN  |      | Lead | Swap |
  ***01*   `----------------------------------'                                       `----------------------------------'
  ***01*                                        ,-------------.       ,-------------.
  ***01*                                        |      |  Ins |       |  Del | Lock |
@@ -23,10 +23,10 @@
  ***01*/
 #define ONJIN_ALTERNATIVES_BASE_QWERTY \
     _______,  KC_1,             KC_2,    KC_3,    KC_4,    KC_5,    _______,\
-    _______,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    _______,\
+    _______,  KC_Q,             KC_W,    KC_E,    KC_R,    KC_T,    VRSN,\
     _______,  LGUI_T(KC_A),     LALT_T(KC_S),    LCTL_T(KC_D),    LSFT_T(KC_F),    KC_G,\
     QK_LEAD, LT(BUTTON, KC_Z),             ALGR_T(KC_X),    KC_C,    HYPR_T(KC_V),    MEH_T(KC_B),    SHRUG,\
-    SH_MON,  SH_MON,           QK_LEAD, _______,LT(MEDIA, KC_ESC),\
+    SH_MON,  QK_LEAD,          _______, _______,LT(MEDIA, KC_ESC),\
     KC_NO,   KC_INSERT,\
                                 KC_HOME,\
     LT(NAV, KC_SPC), LT(MOUSE, KC_BSPC), KC_END,\
@@ -34,7 +34,7 @@
     TO(COLE),KC_Y,    KC_U,    KC_I,    KC_O,           KC_P,           KC_BSLS,\
                 KC_H,    RSFT_T(KC_J),     RCTL_T(KC_K),   LALT_T(KC_L),   LGUI_T(KC_SCLN), KC_QUOTE,\
     TO(WORK),KC_N,    KC_M,             KC_COMM,        ALGR_T(KC_DOT), LT(BUTTON, KC_SLASH), QK_LEAD,\
-                        LT(FUN, KC_TAB),         QK_LEAD,        QK_LEAD,        SH_MON,   SH_MON,\
+                        LT(FUN, KC_TAB),         _______, _______,       QK_LEAD,   SH_MON,\
     KC_DEL, QK_LOCK,\
     KC_PGUP,\
     KC_PGDN, LT(SYM,KC_ENT), LT(NUM, KC_SPC)
@@ -50,7 +50,7 @@
  ***02* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  ***02* |        |   Z  |   X  |   C  |   D  |   V  |      |           |      |   K  |   H  |   ,  |   .  |   /  | RSft   |
  ***02* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- ***02*   |      | Swap | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | Swap | SYMB |
+ ***01*   | Swap | Lead |      |      |MED/Es|                                       |SYM/Ta| FUN  |      | Lead | Swap |
  ***02*   `----------------------------------'                                       `----------------------------------'
  ***02*                                        ,-------------.       ,-------------.
  ***02*                                        |      |  Ins |       |  Del | Lock |
@@ -63,16 +63,16 @@
 #define ONJIN_ALTERNATIVES_BASE_COLEMAK_DH \
     _______, _______,          _______,         _______,        _______,        _______, _______,\
     _______, KC_Q,             KC_W,            KC_F,           KC_P,           KC_B,    _______,\
-    _______, LT(MEDIA, KC_A),   LALT_T(KC_R),    LCTL_T(KC_S),   LSFT_T(KC_T),   KC_G,\
-    _______, KC_Z,             ALGR_T(KC_X),    KC_C,           KC_D,           KC_V,    _______,\
+    _______, LGUI_T(KC_A),   LALT_T(KC_R),    LCTL_T(KC_S),   LSFT_T(KC_T),   KC_G,\
+    _______, LT(BUTTON, KC_Z),             ALGR_T(KC_X),    KC_C,           KC_D,           KC_V,    _______,\
     _______, _______,          _______,         _______,        _______,\
     _______,  _______,\
                                _______,\
     _______,  _______, _______,\
     _______, _______, _______,          _______,        _______,        _______,          _______,\
     TO(BASE),KC_J,    KC_L,             KC_U,           KC_Y,           KC_SCLN,          _______,\
-             KC_M,    RSFT_T(KC_N),     RCTL_T(KC_E),   LALT_T(KC_I),   LT(MEDIA, KC_O),   _______,\
-    _______, KC_K,    KC_H,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH,         _______,\
+             KC_M,    RSFT_T(KC_N),     RCTL_T(KC_E),   LALT_T(KC_I),   LGUI_T( KC_O),   _______,\
+    _______, KC_K,    KC_H,             KC_COMM,        ALGR_T(KC_DOT), LT(BUTTON, KC_SLASH),         _______,\
                       _______,          _______,        _______,        _______,          _______,\
     _______, _______,\
     _______,\
@@ -81,15 +81,15 @@
 /***03* Base layer (WORKMAN) / Full
  ***03*
  ***03* ,--------------------------------------------------.           ,--------------------------------------------------.
- ***03* | Esc    |   1  |   2  |   3  |   4  |   5  |      |           | GAME |   6  |   7  |   8  |   9  |   0  |   =    |
+ ***03* |        |   1  |   2  |   3  |   4  |   5  |      |           | GAME |   6  |   7  |   8  |   9  |   0  |   =    |
  ***03* |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- ***03* | Tab    |   Q  |   W  |   F  |   P  |   G  |      |           | COLE |   J  |   L  |   U  |   Y  |   ;  |   \    |
+ ***03* |        |   Q  |   W  |   F  |   P  |   G  |      |           | COLE |   J  |   L  |   U  |   Y  |   ;  |   \    |
  ***03* |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- ***03* |   `    |MEDI/A|Alt/R |Ctr/S |Shf/T |   D  |------|           |------|   H  |Shf/N |Ctr/E |Alt/I |MEDI/O|   '    |
+ ***03* |        |MEDI/A|Alt/R |Ctr/S |Shf/T |   D  |------|           |------|   H  |Shf/N |Ctr/E |Alt/I |MEDI/O|   '    |
  ***03* |--------+------+------+------+------+------|      |           | BASE |------+------+------+------+------+--------|
- ***03* | LSft   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |   /  | RSft   |
+ ***03* | Lead   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  |   .  |   /  | Lead   |
  ***03* `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- ***03*   | Ctrl | Swap | Lead | LGui | Alt/E|                                       | AltGr| RGui | Lead | Swap | SYMB |
+ ***01*   | Swap | Lead |      |      |MED/Es|                                       |SYM/Ta| FUN  |      | Lead | Swap |
  ***03*   `----------------------------------'                                       `----------------------------------'
  ***03*                                        ,-------------.       ,-------------.
  ***03*                                        |      |  Ins |       |  Del | Lock |
@@ -102,16 +102,16 @@
 #define ONJIN_ALTERNATIVES_BASE_WORKMAN \
     _______, _______,          _______,         _______,        _______,        _______, _______,\
     _______, KC_Q,             KC_D,            KC_R,           KC_W,           KC_B,    _______,\
-    _______, LT(MEDIA, KC_A),   LALT_T(KC_S),    LCTL_T(KC_H),   LSFT_T(KC_T),   KC_G,\
-    _______, KC_Z,             ALGR_T(KC_X),    KC_M,           KC_C,           KC_V,    _______,\
+    _______, LGUI_T(KC_A),   LALT_T(KC_S),    LCTL_T(KC_H),   LSFT_T(KC_T),   KC_G,\
+    _______, LT(BUTTON, KC_Z),             ALGR_T(KC_X),    KC_M,           KC_C,           KC_V,    _______,\
     _______, _______,          _______,         _______,        _______,\
     _______,  _______,\
                                _______,\
     _______,  _______, _______,\
     _______, _______, _______,          _______,        _______,        _______,          _______,\
     _______, KC_J,    KC_F,             KC_U,           KC_P,           KC_SCLN,          _______,\
-             KC_Y,    RSFT_T(KC_N),     RCTL_T(KC_E),   LALT_T(KC_O),   LT(MEDIA, KC_L),   _______,\
-    TO(BASE),KC_K,    KC_L,             KC_COMM,        ALGR_T(KC_DOT), KC_SLASH,         _______,\
+             KC_Y,    RSFT_T(KC_N),     RCTL_T(KC_E),   LALT_T(KC_O),   LGUI_T(KC_L),   _______,\
+    TO(BASE),KC_K,    KC_L,             KC_COMM,        ALGR_T(KC_DOT), LT(BUTTON, KC_SLASH),         _______,\
                       _______,          _______,        _______,        _______,          _______,\
     _______, _______,\
     _______,\
